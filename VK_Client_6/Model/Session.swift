@@ -7,11 +7,14 @@
 
 import Foundation
 
+// Class session
 class Session {
+    
     static let instance = Session()
     
     private init() {}
     
+    // Properties
     var token = ""
     var userID = 0
     
