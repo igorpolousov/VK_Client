@@ -11,11 +11,7 @@ class AllGroupsTableViewController: UITableViewController {
 
     
     
-     var allGroups = [
-        Group(groupName: "Swift", groupImage: .init(imageLiteralResourceName: "swift")),
-        Group(groupName: "Enduro Motorsport", groupImage: .init(imageLiteralResourceName: "endu")),
-        Group(groupName: "World Trading", groupImage: .init(imageLiteralResourceName: "trading"))
-        ]
+     var allGroups = [Group]()
     
     private var filteredGroups = [Group]()
     private var searchBarIsEmpty: Bool {
@@ -66,9 +62,12 @@ class AllGroupsTableViewController: UITableViewController {
             allGroup = allGroups[indexPath.row]
         }
         
-        //let allGroup = allGroups[indexPath.row]
-        cell.groupName.text = allGroup.groupName
-        cell.groupImage.image = allGroup.groupImage
+        cell.groupName.text = allGroup.name
+        if let url = URL(string: allGroup.photo200) {
+            if let data = try? Data(contentsOf: url) {
+                cell.groupImage.image = UIImage(data: data)
+            }
+        }
 
         return cell
     }
@@ -82,7 +81,7 @@ extension AllGroupsTableViewController: UISearchResultsUpdating {
     
     func filterContentForSearchText(_ searchText: String){
         filteredGroups = allGroups.filter({ (res: Group) -> Bool in
-            return res.groupName.lowercased().contains(searchText.lowercased())
+            return res.name.lowercased().contains(searchText.lowercased())
         })
         tableView.reloadData()
     }
