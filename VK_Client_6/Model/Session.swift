@@ -7,11 +7,13 @@
 
 import Foundation
 
+// Class session
 class Session {
     static let shared = Session()
     
     private init() {}
     
+    // Properties
     var token = ""
     var userID = ""
     
