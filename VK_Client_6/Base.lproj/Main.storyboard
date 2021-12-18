@@ -116,7 +116,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
-                        <segue destination="4g8-Zq-hQU" kind="show" id="cdZ-kP-lJL"/>
+                        <segue destination="4g8-Zq-hQU" kind="show" identifier="segue" id="cdZ-kP-lJL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c82-ie-h5O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
