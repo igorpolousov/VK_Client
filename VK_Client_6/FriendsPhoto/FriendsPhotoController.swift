@@ -52,8 +52,6 @@ class FriendsPhotoController: UICollectionViewController {
                 }
             }
         }
-    
-        //cell.friendImage.image = friendPhoto?.photo50
         
         return cell
     }
