@@ -13,6 +13,8 @@ class MyGroupsViewController: UITableViewController {
     var  myGroups = [Group]()
     var urlComponents = URLComponents()
     let session = URLSession.shared
+    var groupR = GroupR()
+    var groupRArray = [GroupR]()
     
     
     override func viewDidLoad() {
@@ -32,6 +34,7 @@ class MyGroupsViewController: UITableViewController {
         let url = urlComponents.url!
         if let data =  try? Data(contentsOf: url) {
             self.parse(json: data)
+            saveAppData(data: groupRArray)
         }
     }
     
@@ -39,6 +42,12 @@ class MyGroupsViewController: UITableViewController {
         let decoder = JSONDecoder()
         if let jsonContainer = try? decoder.decode(GroupContainer.self, from: json) {
             myGroups = jsonContainer.response.items
+            
+            for group in myGroups {
+                groupR.groupName = group.name
+                groupR.photo = group.photo200
+                groupRArray.append(groupR)
+            }
             print(myGroups)
         }
     }

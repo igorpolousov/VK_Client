@@ -8,6 +8,7 @@
 import Foundation
 import RealmSwift
 
-class GroupsR: Object, Codable {
+class GroupR: Object, Codable {
     @objc dynamic var groupName: String
+    @objc dynamic var photo: String
 }

@@ -8,6 +8,6 @@
 import Foundation
 import RealmSwift
 
-class MyPhotos: Object, Codable {
-    @objc dynamic var image: String
+class PhotosR: Object, Codable {
+    @objc dynamic var imageURL: String
 }

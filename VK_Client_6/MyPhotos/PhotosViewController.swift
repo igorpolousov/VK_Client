@@ -10,6 +10,8 @@ import UIKit
 class PhotosViewController: UITableViewController {
     
     var photos = [Photo]()
+    var photosR = PhotosR()
+    var photosRArray = [PhotosR]()
     
     var urlComponents = URLComponents()
     let session = URLSession.shared
@@ -29,6 +31,7 @@ class PhotosViewController: UITableViewController {
         let url = urlComponents.url!
         if let data = try? Data(contentsOf: url) {
             self.parse(json: data)
+            saveAppData(data: photosRArray)
             return
         }
     }
@@ -37,6 +40,14 @@ class PhotosViewController: UITableViewController {
         let decoder = JSONDecoder()
         if let jsonContainer = try? decoder.decode(PhotosConteiner.self, from: json) {
             photos = jsonContainer.response.items
+            for photo in photos {
+                let images = photo.sizes
+                for image in images {
+                    photosR.imageURL = image.url
+                    photosRArray.append(photosR)
+                }
+            }
+           
         }
     }
 
