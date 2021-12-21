@@ -15,6 +15,7 @@ class AllGroupsTableViewController: UITableViewController, UISearchBarDelegate {
     let session = URLSession.shared
     
     var groupsSearch = [GroupSearch]()
+    var allGroups: [Group]?
     
     let searchController = UISearchController(searchResultsController: nil)
     
@@ -23,6 +24,8 @@ class AllGroupsTableViewController: UITableViewController, UISearchBarDelegate {
         super.viewDidLoad()
         searchBar.delegate = self
         searchController.searchBar.placeholder = "Search"
+        
+      
        
     }
     

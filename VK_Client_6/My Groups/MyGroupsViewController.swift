@@ -62,36 +62,30 @@ class MyGroupsViewController: UITableViewController {
         return myGroups.count
     }
     
-//    @IBAction func addGroup(segue: UIStoryboardSegue){
-//
-//        if segue.identifier == "addGroup" {
-//            guard let allGroupsController = segue.source as? AllGroupsTableViewController else {return}
-//
-//            if let index = allGroupsController.tableView.indexPathForSelectedRow {
-//
-//                let group = allGroupsController.allGroups[indexPath.row]
-//
-//             allGroupsController.allGroups = myGroups[index]
-//                }
-//            }
-//        }
-//    }
+    func addGroup(segue: UIStoryboardSegue) {
+        
+        if segue.identifier == "addGroup" {
+            guard let allGroupsController = segue.source as? AllGroupsTableViewController else {return}
+            
+            allGroupsController.allGroups = myGroups
+        }
+    }
     
-         override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            
-            let cell = tableView.dequeueReusableCell(withIdentifier: "MyGroupsCell", for: indexPath) as! MyGroupsViewCell
-            
-            let group = myGroups[indexPath.row]
-            
-             cell.groupName.text = group.name
-             if let url = URL(string: group.photo200) {
-                 if let data = try? Data(contentsOf: url) {
-                     cell.groupImage.image = UIImage(data: data)
-                 }
-             }
-             
-            return cell
-         }
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MyGroupsCell", for: indexPath) as! MyGroupsViewCell
+        
+        let group = myGroups[indexPath.row]
+        
+        cell.groupName.text = group.name
+        if let url = URL(string: group.photo200) {
+            if let data = try? Data(contentsOf: url) {
+                cell.groupImage.image = UIImage(data: data)
+            }
+        }
+        
+        return cell
+    }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
@@ -100,4 +94,5 @@ class MyGroupsViewController: UITableViewController {
         }
     }
 }
+
 
