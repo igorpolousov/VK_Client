@@ -7,34 +7,25 @@
 
 import UIKit
 
-class AllGroupsTableViewController: UITableViewController {
-
+class AllGroupsTableViewController: UITableViewController, UISearchBarDelegate {
     
+    @IBOutlet var searchBar: UISearchBar!
     
-     var allGroups = [Group]()
+    var urlComponents = URLComponents()
+    let session = URLSession.shared
     
-    private var filteredGroups = [Group]()
-    private var searchBarIsEmpty: Bool {
-        guard let text = searchController.searchBar.text else { return false}
-        return text.isEmpty
-    }
-    
-    private var isFiltering: Bool {
-         return searchController.isActive && !searchBarIsEmpty
-    }
+    var groupsSearch = [GroupSearch]()
     
     let searchController = UISearchController(searchResultsController: nil)
+    
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
+        searchBar.delegate = self
         searchController.searchBar.placeholder = "Search"
-        navigationItem.searchController = searchController
-        definesPresentationContext = true
-        
        
     }
+    
 
     // MARK: - Table view data source
 
@@ -43,10 +34,7 @@ class AllGroupsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isFiltering {
-            filteredGroups.count
-        }
-        return allGroups.count
+        groupsSearch.count
     }
 
     
@@ -54,36 +42,49 @@ class AllGroupsTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "AllGroupsCell", for: indexPath) as! AllGroupsTableViewCell
         
-        var allGroup: Group
-        
-        if isFiltering {
-            allGroup = filteredGroups[indexPath.row]
-        } else {
-            allGroup = allGroups[indexPath.row]
-        }
-        
-        cell.groupName.text = allGroup.name
-        if let url = URL(string: allGroup.photo200) {
+        cell.groupName.text = groupsSearch[indexPath.row].name
+        if let url = URL(string: groupsSearch[indexPath.row].photo200) {
             if let data = try? Data(contentsOf: url) {
                 cell.groupImage.image = UIImage(data: data)
             }
         }
-
+        
         return cell
     }
-
-}
-extension AllGroupsTableViewController: UISearchResultsUpdating {
     
-    func updateSearchResults(for searchController: UISearchController) {
-        filterContentForSearchText(searchController.searchBar.text!)
+    func updateSearch(_ text: String) {
+        urlComponents.scheme = "https"
+        urlComponents.host = "api.vk.com"
+        urlComponents.path = "/method/groups.search"
+        urlComponents.queryItems = [
+            URLQueryItem(name: "q", value: text),
+            URLQueryItem(name: "offset", value: "3"),
+            URLQueryItem(name: "count", value: "30"),
+            URLQueryItem(name: "access_token", value: Session.shared.token),
+            URLQueryItem(name: "v", value: "5.131")
+        ]
+        
+        let url = urlComponents.url!
+        if let data =  try? Data(contentsOf: url) {
+            self.parse(json: data)
+        }
     }
     
-    func filterContentForSearchText(_ searchText: String){
-        filteredGroups = allGroups.filter({ (res: Group) -> Bool in
-            return res.name.lowercased().contains(searchText.lowercased())
-        })
+    
+    func parse(json: Data) {
+        let decoder = JSONDecoder()
+        if let jsonContainer = try? decoder.decode(GroupsSearchContainer.self, from: json) {
+            groupsSearch = jsonContainer.response.items
+            print(groupsSearch)
+        }
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        groupsSearch = []
+       
+        updateSearch(searchText)
         tableView.reloadData()
     }
-
 }
+
+

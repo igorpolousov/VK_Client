@@ -43,6 +43,7 @@
 		C296D65C2771F3B1001A6426 /* RealmSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = C296D65B2771F3B1001A6426 /* RealmSave.swift */; };
 		C296D65E2771F3F9001A6426 /* Photos_Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = C296D65D2771F3F9001A6426 /* Photos_Realm.swift */; };
 		C296D6602771F44C001A6426 /* Groups_Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = C296D65F2771F44C001A6426 /* Groups_Realm.swift */; };
+		C296D6622771FC5D001A6426 /* GroupsSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C296D6612771FC5D001A6426 /* GroupsSearch.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +105,7 @@
 		C296D65B2771F3B1001A6426 /* RealmSave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmSave.swift; sourceTree = "<group>"; };
 		C296D65D2771F3F9001A6426 /* Photos_Realm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos_Realm.swift; sourceTree = "<group>"; };
 		C296D65F2771F44C001A6426 /* Groups_Realm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Groups_Realm.swift; sourceTree = "<group>"; };
+		C296D6612771FC5D001A6426 /* GroupsSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsSearch.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,6 +236,7 @@
 			children = (
 				C21D507026126AFC00E23769 /* FriendStructure.swift */,
 				C21D507526126B0F00E23769 /* GroupStructure.swift */,
+				C296D6612771FC5D001A6426 /* GroupsSearch.swift */,
 				C296D628276E25F1001A6426 /* PhotosStructure.swift */,
 				C21D507A26126B2800E23769 /* NewsStructure.swift */,
 				C21D50B226127D7200E23769 /* ShadowView.swift */,
@@ -422,6 +425,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C296D65C2771F3B1001A6426 /* RealmSave.swift in Sources */,
+				C296D6622771FC5D001A6426 /* GroupsSearch.swift in Sources */,
 				C21D50AA26126C4200E23769 /* FriendsPhotoCell.swift in Sources */,
 				C21D505E2612536D00E23769 /* LoginFormController.swift in Sources */,
 				C21D507126126AFC00E23769 /* FriendStructure.swift in Sources */,
