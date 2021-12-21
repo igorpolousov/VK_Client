@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 // MARK: - Welcome
 struct FriendsContainer: Codable {
     let response: FriendsResponse

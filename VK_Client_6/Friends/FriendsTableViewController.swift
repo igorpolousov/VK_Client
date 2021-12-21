@@ -6,16 +6,22 @@
 //
 
 import UIKit
+import RealmSwift
 
 class FriendsTableViewController: UITableViewController {
     
     var friends = [Friend]()
     var urlComponents = URLComponents()
     let session = URLSession.shared
+    
+    var friendR = FriendR()
+    var friendRArray = [FriendR]()
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         tableView.register(UINib(nibName: "Header", bundle: nil), forHeaderFooterViewReuseIdentifier: "Header")
         
         urlComponents.scheme = "https"
@@ -31,15 +37,29 @@ class FriendsTableViewController: UITableViewController {
         let url = urlComponents.url!
         if let data = try? Data(contentsOf: url) {
             self.parse(json: data)
+            saveAppData(data: friendRArray)
+            
             return
         }
+        
+        
     }
     
     func parse(json: Data) {
         let decoder = JSONDecoder()
-        if let jsonCOntainer = try? decoder.decode(FriendsContainer.self, from: json) {
-            friends = jsonCOntainer.response.items
+        if let jsonContainer = try? decoder.decode(FriendsContainer.self, from: json) {
+            friends = jsonContainer.response.items
             print(friends)
+            
+            for friend in friends {
+                friendR.firstName = friend.firstName
+                friendR.lastName = friend.lastName
+                friendR.photo50 = friend.photo50
+                print(friendR)
+                friendRArray.append(friendR)
+                print(friendRArray)
+            }
+            
         }
     }
 
@@ -49,7 +69,7 @@ class FriendsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FriendsCell", for: indexPath) as! FriendsTableViewCell
-
+        
         cell.friendName?.text = "\(friends[indexPath.row].firstName) \(friends[indexPath.row].lastName)"
         
         if let url = URL(string: friends[indexPath.row].photo50) {
@@ -65,6 +85,8 @@ class FriendsTableViewController: UITableViewController {
         let rowIndex = tableView.indexPathForSelectedRow?.row
         vc.friendPhoto = friends[rowIndex!]
     }
+    
+   
 
     // MARK: - Table view data source
     
@@ -139,6 +161,6 @@ class FriendsTableViewController: UITableViewController {
 //
 //        return UITableViewCell()
 //    }
-    
+   
     
 }

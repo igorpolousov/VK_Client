@@ -671,11 +671,11 @@
             </objects>
             <point key="canvasLocation" x="1693" y="777"/>
         </scene>
-        <!--Item-->
+        <!--My Photos-->
         <scene sceneID="7Ph-Y3-gmq">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="K3f-QR-ESs" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="XQG-GI-IQn"/>
+                    <tabBarItem key="tabBarItem" title="My Photos" id="XQG-GI-IQn"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="kss-BK-hhm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
