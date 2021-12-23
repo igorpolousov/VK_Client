@@ -8,13 +8,6 @@
 import Foundation
 import RealmSwift
 
-
-
-
-    
-   
-
-
 class FriendR: Object, Codable {
     @objc dynamic var lastName: String
     @objc dynamic var firstName: String

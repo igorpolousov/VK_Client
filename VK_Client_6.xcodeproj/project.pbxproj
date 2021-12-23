@@ -44,6 +44,8 @@
 		C296D65E2771F3F9001A6426 /* Photos_Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = C296D65D2771F3F9001A6426 /* Photos_Realm.swift */; };
 		C296D6602771F44C001A6426 /* Groups_Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = C296D65F2771F44C001A6426 /* Groups_Realm.swift */; };
 		C296D6622771FC5D001A6426 /* GroupsSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C296D6612771FC5D001A6426 /* GroupsSearch.swift */; };
+		C296D66427723103001A6426 /* NameSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C296D66327723103001A6426 /* NameSelection.swift */; };
+		C2EABB242774945000497B43 /* FriendsExtensionForTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EABB232774945000497B43 /* FriendsExtensionForTable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +108,8 @@
 		C296D65D2771F3F9001A6426 /* Photos_Realm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos_Realm.swift; sourceTree = "<group>"; };
 		C296D65F2771F44C001A6426 /* Groups_Realm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Groups_Realm.swift; sourceTree = "<group>"; };
 		C296D6612771FC5D001A6426 /* GroupsSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsSearch.swift; sourceTree = "<group>"; };
+		C296D66327723103001A6426 /* NameSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameSelection.swift; sourceTree = "<group>"; };
+		C2EABB232774945000497B43 /* FriendsExtensionForTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsExtensionForTable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +221,7 @@
 			children = (
 				C21D509826126BD600E23769 /* FriendsTableViewController.swift */,
 				C21D508E26126B9A00E23769 /* FriendsTableViewCell.swift */,
+				C2EABB232774945000497B43 /* FriendsExtensionForTable.swift */,
 			);
 			path = Friends;
 			sourceTree = "<group>";
@@ -240,6 +245,7 @@
 				C296D628276E25F1001A6426 /* PhotosStructure.swift */,
 				C21D507A26126B2800E23769 /* NewsStructure.swift */,
 				C21D50B226127D7200E23769 /* ShadowView.swift */,
+				C296D66327723103001A6426 /* NameSelection.swift */,
 				C28C48302624DD5B00ED4135 /* Session.swift */,
 				C296D6562771CF32001A6426 /* Realm_Model */,
 				C28C48352624DD7200ED4135 /* Header */,
@@ -431,6 +437,7 @@
 				C21D507126126AFC00E23769 /* FriendStructure.swift in Sources */,
 				C296D65E2771F3F9001A6426 /* Photos_Realm.swift in Sources */,
 				C21D509926126BD600E23769 /* FriendsTableViewController.swift in Sources */,
+				C296D66427723103001A6426 /* NameSelection.swift in Sources */,
 				C21D50B326127D7200E23769 /* ShadowView.swift in Sources */,
 				C21D508526126B6E00E23769 /* NewsTableViewCell.swift in Sources */,
 				C21D508F26126B9A00E23769 /* FriendsTableViewCell.swift in Sources */,
@@ -439,6 +446,7 @@
 				C296D632276E4B8B001A6426 /* PhotosViewController.swift in Sources */,
 				C21D50A126126C1200E23769 /* FriendsPhotoController.swift in Sources */,
 				C296D630276E462B001A6426 /* MyPhotosViewCell.swift in Sources */,
+				C2EABB242774945000497B43 /* FriendsExtensionForTable.swift in Sources */,
 				C21D507B26126B2800E23769 /* NewsStructure.swift in Sources */,
 				C2036BCE2617ED41004B96F2 /* Header.swift in Sources */,
 				C2965C522768B8340050ED7E /* WebAccessViewController.swift in Sources */,

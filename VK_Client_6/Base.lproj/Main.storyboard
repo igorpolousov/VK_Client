@@ -203,7 +203,6 @@
                                     <outlet property="friendName" destination="HGJ-V0-5Mb" id="fkn-SW-GHx"/>
                                     <outlet property="friendPhoto" destination="KnV-1d-llM" id="o63-ql-o3P"/>
                                     <outlet property="shadowView" destination="3b6-76-qX7" id="D3u-jb-XMD"/>
-                                    <segue destination="ppk-Gx-Nba" kind="show" id="dqe-vF-6Wr"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -221,9 +220,9 @@
         <!--Friends Photo Controller-->
         <scene sceneID="esV-jc-ZIC">
             <objects>
-                <collectionViewController id="ppk-Gx-Nba" customClass="FriendsPhotoController" customModule="VK_Client_6" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="friendPhoto" id="ppk-Gx-Nba" customClass="FriendsPhotoController" customModule="VK_Client_6" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="YRi-2m-xpJ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mc0-z2-0Lx">
