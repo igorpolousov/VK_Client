@@ -17,13 +17,15 @@ class AllGroupsTableViewController: UITableViewController, UISearchBarDelegate {
     var groupsSearch = [GroupSearch]()
     var allGroups: [Group]?
     
-    let searchController = UISearchController(searchResultsController: nil)
+    //let searchController = UISearchController(searchResultsController: nil)
     
         
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
-        searchController.searchBar.placeholder = "Search"
+        //searchController.searchBar.placeholder = "Search"
+        //searchController.obscuresBackgroundDuringPresentation = false
+        //navigationItem.searchController = searchController
         
       
        
