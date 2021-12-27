@@ -13,7 +13,7 @@ import UIKit
 
 class FriendsPhotoController: UICollectionViewController {
 
-    var friendPhoto: Friend?
+    var friendPhoto: String?
     var count = 0
     
     
@@ -45,8 +45,8 @@ class FriendsPhotoController: UICollectionViewController {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! FriendsPhotoCell
     
-        if let friends = friendPhoto {
-            if let url = URL(string: friends.photo50) {
+        if let urlString = friendPhoto{
+            if let url = URL(string: urlString) {
                 if let data = try? Data(contentsOf: url){
                     cell.friendImage.image =  UIImage(data: data)
                 }

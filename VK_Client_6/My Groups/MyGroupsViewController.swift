@@ -13,6 +13,8 @@ class MyGroupsViewController: UITableViewController {
     var  myGroups = [Group]()
     var urlComponents = URLComponents()
     let session = URLSession.shared
+    var groupR = GroupR()
+    var groupRArray = [GroupR]()
     
     
     override func viewDidLoad() {
@@ -32,6 +34,7 @@ class MyGroupsViewController: UITableViewController {
         let url = urlComponents.url!
         if let data =  try? Data(contentsOf: url) {
             self.parse(json: data)
+            saveAppData(data: groupRArray)
         }
     }
     
@@ -39,6 +42,12 @@ class MyGroupsViewController: UITableViewController {
         let decoder = JSONDecoder()
         if let jsonContainer = try? decoder.decode(GroupContainer.self, from: json) {
             myGroups = jsonContainer.response.items
+            
+            for group in myGroups {
+                groupR.groupName = group.name
+                groupR.photo = group.photo200
+                groupRArray.append(groupR)
+            }
             print(myGroups)
         }
     }
@@ -46,45 +55,37 @@ class MyGroupsViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return myGroups.count
     }
     
-//    @IBAction func addGroup(segue: UIStoryboardSegue){
-//
-//        if segue.identifier == "addGroup" {
-//            guard let allGroupsController = segue.source as? AllGroupsTableViewController else {return}
-//
-//            if let index = allGroupsController.tableView.indexPathForSelectedRow {
-//
-//                let group = allGroupsController.allGroups[indexPath.row]
-//
-//             allGroupsController.allGroups = myGroups[index]
-//                }
-//            }
-//        }
-//    }
+    func addGroup(segue: UIStoryboardSegue) {
+        
+        if segue.identifier == "addGroup" {
+            guard let allGroupsController = segue.source as? AllGroupsTableViewController else {return}
+            
+            allGroupsController.allGroups = myGroups
+        }
+    }
     
-         override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            
-            let cell = tableView.dequeueReusableCell(withIdentifier: "MyGroupsCell", for: indexPath) as! MyGroupsViewCell
-            
-            let group = myGroups[indexPath.row]
-            
-             cell.groupName.text = group.name
-             if let url = URL(string: group.photo200) {
-                 if let data = try? Data(contentsOf: url) {
-                     cell.groupImage.image = UIImage(data: data)
-                 }
-             }
-             
-            return cell
-         }
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MyGroupsCell", for: indexPath) as! MyGroupsViewCell
+        
+        let group = myGroups[indexPath.row]
+        
+        cell.groupName.text = group.name
+        if let url = URL(string: group.photo200) {
+            if let data = try? Data(contentsOf: url) {
+                cell.groupImage.image = UIImage(data: data)
+            }
+        }
+        
+        return cell
+    }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
@@ -93,4 +94,5 @@ class MyGroupsViewController: UITableViewController {
         }
     }
 }
+
 
