@@ -15,7 +15,7 @@ class AllGroupsTableViewController: UITableViewController, UISearchBarDelegate {
     let session = URLSession.shared
     
     var groupsSearch = [GroupSearch]()
-    var allGroups: [Group]?
+    var allGroups: [GroupT]?
     
     //let searchController = UISearchController(searchResultsController: nil)
     

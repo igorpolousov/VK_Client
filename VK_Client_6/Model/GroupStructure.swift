@@ -7,6 +7,9 @@
 
 import Foundation
 
+// Массив данных полученных JSON
+var  myGroups = [Group]()
+
 struct GroupContainer: Codable {
     let response: GroupResponse
 }
