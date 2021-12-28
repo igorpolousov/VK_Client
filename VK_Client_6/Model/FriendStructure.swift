@@ -6,7 +6,8 @@
 //
 
 import Foundation
-
+// Массив данных полученных из JSON
+var friends = [Friend]()
 
 // MARK: - Welcome
 struct FriendsContainer: Codable {

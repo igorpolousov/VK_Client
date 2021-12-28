@@ -10,22 +10,15 @@ import RealmSwift
 
 class FriendsTableViewController: UITableViewController {
     
-    var friends = [Friend]()
+    
     var urlComponents = URLComponents()
     let session = URLSession.shared
     
-    var friendR = FriendR()
-    var friendRArray = [FriendR]()
-    
-    var friendForTable = FriendTable(firstName: "", lastName: "", photo50: "")
-    var friendsName = [FriendTable]()
-    var sortedFriendsName = [FriendTable]()
-    var friendForTableArray = [FriendForTable]()
-    
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+       
         
         tableView.register(UINib(nibName: "Header", bundle: nil), forHeaderFooterViewReuseIdentifier: "Header")
         
@@ -42,11 +35,14 @@ class FriendsTableViewController: UITableViewController {
         let url = urlComponents.url!
         if let data = try? Data(contentsOf: url) {
             self.parse(json: data)
-            saveAppData(data: friendRArray)
+            print("FRIENDS NAME")
+            print(friendsName)
+            addToRealmDataBase()
+            getDataFromRealm()
+            convertedNames()
             return
         }
-        
-       
+     
     }
     
     func parse(json: Data) {
@@ -54,10 +50,7 @@ class FriendsTableViewController: UITableViewController {
         if let jsonContainer = try? decoder.decode(FriendsContainer.self, from: json) {
             friends = jsonContainer.response.items
             print(friends)
-            saveToRealm()
-            addFriendForTable()
-            convertedNames()
-          
+            transfer()
         }
     }
     

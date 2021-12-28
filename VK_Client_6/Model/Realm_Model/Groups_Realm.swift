@@ -9,6 +9,7 @@ import Foundation
 import RealmSwift
 
 class GroupR: Object, Codable {
-    @objc dynamic var groupName: String
-    @objc dynamic var photo: String
+    @objc dynamic var id: Int = 0
+    @objc dynamic var groupName: String = ""
+    @objc dynamic var photo: String = ""
 }

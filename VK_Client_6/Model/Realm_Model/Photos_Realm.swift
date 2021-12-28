@@ -9,5 +9,6 @@ import Foundation
 import RealmSwift
 
 class PhotosR: Object, Codable {
-    @objc dynamic var imageURL: String
+    @objc dynamic var id: Int = 0
+    @objc dynamic var imageURL: String = ""
 }

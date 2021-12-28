@@ -31,7 +31,6 @@ class PhotosViewController: UITableViewController {
         let url = urlComponents.url!
         if let data = try? Data(contentsOf: url) {
             self.parse(json: data)
-            saveAppData(data: photosRArray )
             return
         }
     }
