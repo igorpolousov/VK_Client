@@ -9,15 +9,13 @@ import UIKit
 
 class PhotosViewController: UITableViewController {
     
-    var photos = [Photo]()
-    var photosR = PhotosR()
-    var photosRArray = [PhotosR]()
-    
     var urlComponents = URLComponents()
     let session = URLSession.shared
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        getPhotosDataFromRealm()
         
         urlComponents.scheme = "https"
         urlComponents.host = "api.vk.com"
@@ -31,35 +29,29 @@ class PhotosViewController: UITableViewController {
         let url = urlComponents.url!
         if let data = try? Data(contentsOf: url) {
             self.parse(json: data)
+            addPhotosToRealmDataBase()
             return
         }
+        
     }
     
     func parse(json: Data) {
         let decoder = JSONDecoder()
         if let jsonContainer = try? decoder.decode(PhotosConteiner.self, from: json) {
             photos = jsonContainer.response.items
-            for photo in photos {
-                let images = photo.sizes
-                for image in images {
-                    photosR.imageURL = image.url
-                    photosRArray.append(photosR)
-                }
-            }
-           
+           transferPhotos()
         }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return photos.count
+        return photosForTable.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellPhotoMy", for: indexPath)
-        let photo = photos[indexPath.row].sizes
-        let images = photo[indexPath.row].url
-  
-            if let url = URL(string: images ) {
+        let url = photosForTable[indexPath.row]
+
+        if let url = URL(string: url) {
                 if let data = try? Data(contentsOf: url) {
                     cell.imageView?.image = UIImage(data: data)
                 }
@@ -70,9 +62,8 @@ class PhotosViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "Myphotos") as? MyPhotosViewController {
-            let photo = photos[indexPath.row].sizes
-            let images = photo[indexPath.row].url
-            if let url = URL(string: images ) {
+            let url = photosForTable[indexPath.row]
+            if let url = URL(string: url) {
                 if let data = try? Data(contentsOf: url) {
                     let imageToSend = UIImage(data: data)
                     vc.imageGet = imageToSend

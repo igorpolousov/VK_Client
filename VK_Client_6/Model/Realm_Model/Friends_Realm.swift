@@ -23,9 +23,9 @@ var friendRArray = [FriendR()]
 
 // 3.Перевод данных в массив с объектами класса Realm
 func transfer() {
-    for (index,data) in friends.enumerated() {
+    for data in friends {
         let a = FriendR()
-        a.id = index
+        a.id = data.id
         a.firstName = data.firstName
         a.lastName = data.lastName
         a.photo50 = data.photo50
@@ -53,7 +53,7 @@ func addToRealmDataBase() {
         realm.delete(friendsFromRealm)
         realm.add(realmData)
         try realm.commitWrite()
-        print(realm.configuration.fileURL)
+        print(realm.configuration.fileURL as Any)
     } catch {
         print(error)
     }

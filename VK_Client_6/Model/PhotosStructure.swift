@@ -7,6 +7,9 @@
 
 import Foundation
 
+// Массив данных полученных JSON
+var photos = [Photo]()
+
 // MARK: - Welcome
 struct PhotosConteiner: Codable {
     let response: PhotosResponse

@@ -18,7 +18,8 @@ class FriendsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       
+        getDataFromRealm()
+        convertedNames()
         
         tableView.register(UINib(nibName: "Header", bundle: nil), forHeaderFooterViewReuseIdentifier: "Header")
         
@@ -38,8 +39,6 @@ class FriendsTableViewController: UITableViewController {
             print("FRIENDS NAME")
             print(friendsName)
             addToRealmDataBase()
-            getDataFromRealm()
-            convertedNames()
             return
         }
      
