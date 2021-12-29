@@ -31,10 +31,6 @@ var letters = ["а","б","в","г","д","е","ж","з","и","к","л","м","н",
 // Начальный массив с именами
 var friendsName = [FriendTable]()
 
-
-//var friendForTableArray = [FriendForTable]()
-
-
 func convertedNames(_ names: [FriendTable]) -> [FriendForTable] {
     // Чтобы данные в таблице обновлялись возращаемый массив должен быть локальной переменной внутри функции
     var objectsArray = [FriendForTable]()
