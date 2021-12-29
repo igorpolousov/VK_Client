@@ -8,20 +8,41 @@
 import UIKit
 import RealmSwift
 
-class FriendsTableViewController: UITableViewController {
+class FriendsTableViewController: UITableViewController, UISearchResultsUpdating {
     
-    
+
     var urlComponents = URLComponents()
     let session = URLSession.shared
+    
+    var filteredFriendsNames = [FriendTable]()
+    var friendsToLoad = [FriendForTable]()
+    
+    // 1. Добавить контроллер для поиска
+    let searchController = UISearchController(searchResultsController: nil)
+    // 2. Добавить проверку есть текст в строке поиска или нет
+    var searchBarIsEmpty: Bool {
+        guard let text = searchController.searchBar.text else { return false }
+        return text.isEmpty
+    }
+    // 3. Проверка для выбора какой массив данных использовать в таблице
+    var isFiltering: Bool {
+        return !searchBarIsEmpty && searchController.isActive
+    }
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getDataFromRealm()
-        convertedNames()
+        // 4. Начальные данные для поискового контроллера при загрузке View
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Enter text for search"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
         
-        tableView.register(UINib(nibName: "Header", bundle: nil), forHeaderFooterViewReuseIdentifier: "Header")
+        getDataFromRealm()
+       
+        //tableView.register(UINib(nibName: "Header", bundle: nil), forHeaderFooterViewReuseIdentifier: "Header")
         
         urlComponents.scheme = "https"
         urlComponents.host = "api.vk.com"
@@ -39,8 +60,11 @@ class FriendsTableViewController: UITableViewController {
             print("FRIENDS NAME")
             print(friendsName)
             addToRealmDataBase()
-            return
+            //return
         }
+        
+       
+        friendsToLoad = sortedFriends
      
     }
     
@@ -53,51 +77,64 @@ class FriendsTableViewController: UITableViewController {
         }
     }
     
+    // MARK: - Table view data source
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
-        friendForTableArray.count
+        if !isFiltering {
+            friendsToLoad = sortedFriends
+            return friendsToLoad.count
+        }
+        if isFiltering {
+            friendsToLoad = convertedNames(filteredFriendsNames)
+            return  friendsToLoad.count
+        }
+        return  friendsToLoad.count
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if friendForTableArray[section].sectionObjects.isEmpty{
+        if friendsToLoad[section].sectionObjects.isEmpty {
             return nil
         } else {
-            return friendForTableArray[section].sectionName.uppercased()
+            return friendsToLoad[section].sectionName.uppercased()
         }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return friendForTableArray[section].sectionObjects.count
+           return friendsToLoad[section].sectionObjects.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FriendsCell", for: indexPath) as! FriendsTableViewCell
         
-        let section = friendForTableArray[indexPath.section]
-        let sectionObject = section.sectionObjects
-        
-        cell.friendName.text = "\(sectionObject[indexPath.row].firstName)  \(sectionObject[indexPath.row].lastName)"
-        if let url = URL(string: sectionObject[indexPath.row].photo50) {
-            if let data = try? Data(contentsOf: url) {
-                cell.friendPhoto.image = UIImage(data: data)
+            let section = friendsToLoad[indexPath.section]
+            let sectionObject = section.sectionObjects
+            
+            cell.friendName.text = "\(sectionObject[indexPath.row].firstName)  \(sectionObject[indexPath.row].lastName)"
+            if let url = URL(string: sectionObject[indexPath.row].photo50) {
+                if let data = try? Data(contentsOf: url) {
+                    cell.friendPhoto.image = UIImage(data: data)
+                }
             }
+            return cell
         }
-        
-        return cell
-    }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "friendPhoto") as? FriendsPhotoController {
-            vc.friendPhoto = friendForTableArray[indexPath.section].sectionObjects[indexPath.row].photo50
+            vc.friendPhoto = friendsToLoad[indexPath.section].sectionObjects[indexPath.row].photo50
             navigationController?.pushViewController(vc, animated: true)
         }
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        let vc = segue.destination as! FriendsPhotoController
-//        let section = tableView.indexPathForSelectedRow?.section
-//        let rowIndex = tableView.indexPathForSelectedRow?.row
-//        vc.friendPhoto = friendForTableArray[section!].sectionObjects[rowIndex].photo50
-//    }
+    // 5. Получение текста из поисковой строки
+    func updateSearchResults(for searchController: UISearchController) {
+        filteredResults(searchController.searchBar.text!)
+    }
+    
+    // 6. Поисковая функция
+    func filteredResults(_ searchText: String) {
+        filteredFriendsNames = friendsName.filter { $0.lastName.uppercased().contains(searchText.uppercased()) || $0.firstName.uppercased().contains(searchText.uppercased()) }
+      tableView.reloadData()
+    }
     
 }
 

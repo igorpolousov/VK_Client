@@ -72,7 +72,6 @@ func getDataFromRealm() {
             friendTable.lastName = data.lastName
             friendTable.photo50 = data.photo50
             friendsName.append(friendTable)
-            
         }
     } catch {
         print(error)

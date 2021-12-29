@@ -45,7 +45,7 @@ class WebAccessViewController: UIViewController, WKNavigationDelegate {
     func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
         
         guard let url = navigationResponse.response.url, url.path == "/blank.html", let fragment = url.fragment  else {
-            let urlResponse = navigationResponse.response.url
+           // let urlResponse = navigationResponse.response.url
             decisionHandler(.allow)
             return
         }

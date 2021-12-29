@@ -8,6 +8,7 @@
 import Foundation
 import RealmSwift
 
+// 1. структура для отображения данных в таблице
 struct FriendForTable {
     var sectionName: String
     var sectionObjects: [FriendTable]
@@ -24,55 +25,50 @@ struct FriendTable: Equatable {
     }
 }
 
+// 2. Массив с данными
 var letters = ["а","б","в","г","д","е","ж","з","и","к","л","м","н","о","п","р","с","т","у","ф","х","ц","ч","ш","щ","э","ю","я","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
 
-var nameDict = Dictionary<String, Array<FriendTable>>()
+// Начальный массив с именами
 var friendsName = [FriendTable]()
-var sortedFriendsName = [FriendTable]()
-var friendForTableArray = [FriendForTable]()
 
 
-extension FriendsTableViewController {
+//var friendForTableArray = [FriendForTable]()
+
+
+func convertedNames(_ names: [FriendTable]) -> [FriendForTable] {
+    // Чтобы данные в таблице обновлялись возращаемый массив должен быть локальной переменной внутри функции
+    var objectsArray = [FriendForTable]()
+    var nameDict = Dictionary<String, Array<FriendTable>>()
     
-//    func addFriendForTable() {
-//        for friend in friends {
-//            friendForTable.lastName = friend.lastName
-//            friendForTable.firstName = friend.firstName
-//            friendForTable.photo50 = friend.photo50
-//            friendsName.append(friendForTable)
-//        }
-//        print("Friends NAMe \(friendsName)")
-//    }
-    
-    func convertedNames() {
-        let sortedFriendsName = friendsName.sorted { $0.lastName.localizedCaseInsensitiveCompare($1.lastName) == ComparisonResult.orderedAscending }
-        
-        for letter in letters {
-            for friend in sortedFriendsName {
-                if letter.uppercased() == friend.lastName.first?.uppercased() {
-                    nameDict[letter] = [friend]
-                }
+    for letter in letters {
+        for name in names {
+            if letter.uppercased() == name.lastName.first?.uppercased() {
+                nameDict[letter] = [name]
             }
         }
-        
-        for friend in sortedFriendsName {
-            for letter in letters {
-                if letter.uppercased() == friend.lastName.first?.uppercased() {
-                    if let a = nameDict[letter] {
-                        if !a.contains(friend) {
-                            nameDict[letter]?.append(friend)
-                        }
+    }
+    
+    for name in names {
+        for letter in letters {
+            if letter.uppercased() == name.lastName.first?.uppercased() {
+                if let a = nameDict[letter] {
+                    if !a.contains(name) {
+                        nameDict[letter]?.append(name)
                     }
                 }
             }
         }
-        
-        let sortedDict = nameDict.sorted { $0.key.localizedCaseInsensitiveCompare($1.key) == ComparisonResult.orderedAscending }
-        
-        for (key,value) in sortedDict {
-            friendForTableArray.append(FriendForTable(sectionName: key, sectionObjects: value))
-        }
-        
     }
-  
+    
+    let sortedDict = nameDict.sorted { $0.key.localizedCaseInsensitiveCompare($1.key) == ComparisonResult.orderedAscending }
+    
+    for (key,value) in sortedDict {
+        objectsArray.append(FriendForTable(sectionName: key, sectionObjects: value))
+    }
+    return objectsArray
 }
+
+var sortedFriends = convertedNames(friendsName)
+
+
+  
