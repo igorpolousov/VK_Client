@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wCt-Zx-y6N">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -603,27 +602,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="FAg-FF-a31">
-                            <size key="itemSize" width="170" height="170"/>
-                            <size key="estimatedItemSize" width="170" height="170"/>
+                            <size key="itemSize" width="350" height="350"/>
+                            <size key="estimatedItemSize" width="350" height="350"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="myPhotos" id="6FM-bs-38O" customClass="MyPhotosViewCell" customModule="VK_Client_6" customModuleProvider="target">
-                                <rect key="frame" x="10" y="10" width="170" height="170"/>
+                                <rect key="frame" x="32" y="10" width="350" height="350"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="v3A-gK-QZn">
-                                    <rect key="frame" x="0.0" y="0.0" width="170" height="170"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="350" height="350"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dpU-eV-CTn">
-                                            <rect key="frame" x="-1" y="1" width="170" height="170"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="350" height="350"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                     </subviews>
                                 </collectionViewCellContentView>
-                                <size key="customSize" width="170" height="170"/>
+                                <size key="customSize" width="350" height="350"/>
                                 <connections>
                                     <outlet property="imageCell" destination="dpU-eV-CTn" id="vWh-eZ-sqd"/>
                                 </connections>

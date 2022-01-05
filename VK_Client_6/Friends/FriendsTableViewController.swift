@@ -70,7 +70,7 @@ class FriendsTableViewController: UITableViewController, UISearchResultsUpdating
             self.parse(json: data)
             print("FRIENDS NAME")
             print(friendsName)
-            addToRealmDataBase()
+            //addToRealmDataBase()
             //return
         }
         
@@ -84,7 +84,7 @@ class FriendsTableViewController: UITableViewController, UISearchResultsUpdating
         if let jsonContainer = try? decoder.decode(FriendsContainer.self, from: json) {
             friends = jsonContainer.response.items
             print(friends)
-            transfer()
+           // transfer()
         }
     }
     

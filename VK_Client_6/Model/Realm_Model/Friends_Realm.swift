@@ -83,7 +83,7 @@ func getDataFromRealm() -> Results<FriendR> {
     return observerArray
 }
 
-// Перевод данных из Realm в данные для таблицы
+// 6 Перевод данных из Realm в данные для таблицы
 func fromRealmToTable(_ array: Results<FriendR>) -> [FriendTable] {
     for data in array {
         var a = FriendTable(firstName: "", lastName: "", photo50: "")

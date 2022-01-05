@@ -54,15 +54,23 @@ func addPhotosToRealmDataBase() {
 var photosForTable = [String]()
 
 // 5. Получение данных для таблицы
-func getPhotosDataFromRealm() {
+func getPhotosDataFromRealm() -> Results<PhotosR>  {
+    var observerArray: Results<PhotosR>!
     do {
         let realm = try Realm()
-        let getDataFromRealm = Array(realm.objects(PhotosR.self))
-        for data in getDataFromRealm {
-            let photoURL = data.imageURL
-            photosForTable.append(photoURL)
-        }
+        let realmObserver = realm.objects(PhotosR.self)
+        observerArray = realmObserver
     } catch {
         print(error)
+    }
+    return observerArray
+}
+
+// 6. Перевод данных из Realm в данные таблицы
+func photosFromRealmToTable(_ array: Results<PhotosR>) {
+    photosForTable.removeAll()
+    for data in array {
+        let photoURL = data.imageURL
+        photosForTable.append(photoURL)
     }
 }

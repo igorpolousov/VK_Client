@@ -6,16 +6,26 @@
 //
 
 import UIKit
+import RealmSwift
 
 class PhotosViewController: UITableViewController {
     
     var urlComponents = URLComponents()
     let session = URLSession.shared
+    
+    var photosObserver: Results<PhotosR>?
+    var token: NotificationToken?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getPhotosDataFromRealm()
+        photosObserver = getPhotosDataFromRealm()
+
+        self.token = self.photosObserver?.observe(on: .main, { [weak self] (changes: RealmCollectionChange) in
+            self?.photosObserver = getPhotosDataFromRealm()
+            photosFromRealmToTable((self?.photosObserver!)!)
+            self?.tableView.reloadData()
+        })
         
         urlComponents.scheme = "https"
         urlComponents.host = "api.vk.com"
@@ -29,7 +39,7 @@ class PhotosViewController: UITableViewController {
         let url = urlComponents.url!
         if let data = try? Data(contentsOf: url) {
             self.parse(json: data)
-            addPhotosToRealmDataBase()
+            //addPhotosToRealmDataBase()
             return
         }
         
@@ -39,10 +49,11 @@ class PhotosViewController: UITableViewController {
         let decoder = JSONDecoder()
         if let jsonContainer = try? decoder.decode(PhotosConteiner.self, from: json) {
             photos = jsonContainer.response.items
-           transferPhotos()
+           //transferPhotos()
         }
     }
 
+    // MARK: Table data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return photosForTable.count
     }
