@@ -19,8 +19,6 @@ class FriendR: Object, Codable {
 // 2.Массив с объектами класса Realm
 var friendRArray = [FriendR()]
 
-
-
 // 3.Перевод данных в массив с объектами класса Realm
 func transfer() {
     for data in friends {
@@ -53,6 +51,7 @@ func addToRealmDataBase() {
         realm.delete(friendsFromRealm)
         realm.add(realmData)
         try realm.commitWrite()
+        print("REALM DATA")
         print(realm.configuration.fileURL as Any)
     } catch {
         print(error)
@@ -62,9 +61,12 @@ func addToRealmDataBase() {
 }
 
 // 5. Получение данных для таблицы
-func getDataFromRealm() {
+func getDataFromRealm() -> Results<FriendR> {
+    var observerArray: Results<FriendR>!
     do {
         let realm = try Realm()
+        let realmObserver = realm.objects(FriendR.self)
+        observerArray = realmObserver
         let getRealmData = Array(realm.objects(FriendR.self))
         for data in getRealmData {
             var friendTable = FriendTable(firstName: "", lastName: "", photo50: "")
@@ -78,4 +80,17 @@ func getDataFromRealm() {
     }
     print("FRIENDS NAME")
     print(friendsName)
+    return observerArray
+}
+
+// Перевод данных из Realm в данные для таблицы
+func fromRealmToTable(_ array: Results<FriendR>) -> [FriendTable] {
+    for data in array {
+        var a = FriendTable(firstName: "", lastName: "", photo50: "")
+        a.firstName = data.firstName
+        a.lastName = data.lastName
+        a.photo50 = data.photo50
+        
+    }
+    return  friendsName
 }

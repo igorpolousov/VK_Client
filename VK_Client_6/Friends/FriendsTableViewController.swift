@@ -17,6 +17,9 @@ class FriendsTableViewController: UITableViewController, UISearchResultsUpdating
     var filteredFriendsNames = [FriendTable]()
     var friendsToLoad = [FriendForTable]()
     
+    var friendsObserver: Results<FriendR>?
+    var token: NotificationToken?
+    
     // 1. Добавить контроллер для поиска
     let searchController = UISearchController(searchResultsController: nil)
     // 2. Добавить проверку есть текст в строке поиска или нет
@@ -40,7 +43,14 @@ class FriendsTableViewController: UITableViewController, UISearchResultsUpdating
         navigationItem.searchController = searchController
         definesPresentationContext = true
         
-        getDataFromRealm()
+        friendsObserver = getDataFromRealm()
+        
+        self.token = self.friendsObserver?.observe(on: .main, { [weak self] (changes: RealmCollectionChange) in
+            self?.friendsObserver = getDataFromRealm()
+            friendsName = fromRealmToTable((self?.friendsObserver)!)
+            self?.friendsToLoad = convertedNames(friendsName)
+            self?.tableView.reloadData()
+        })
        
         //tableView.register(UINib(nibName: "Header", bundle: nil), forHeaderFooterViewReuseIdentifier: "Header")
         
@@ -54,6 +64,7 @@ class FriendsTableViewController: UITableViewController, UISearchResultsUpdating
             URLQueryItem(name: "access_token", value: Session.shared.token),
             URLQueryItem(name: "v", value: "5.131")
         ]
+        
         let url = urlComponents.url!
         if let data = try? Data(contentsOf: url) {
             self.parse(json: data)
@@ -81,7 +92,7 @@ class FriendsTableViewController: UITableViewController, UISearchResultsUpdating
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         if !isFiltering {
-            friendsToLoad = sortedFriends
+            //friendsToLoad = sortedFriends
             return friendsToLoad.count
         }
         if isFiltering {
