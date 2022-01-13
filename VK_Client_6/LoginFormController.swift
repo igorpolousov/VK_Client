@@ -14,6 +14,8 @@ class LoginFormController: UIViewController {
     @IBAction func enterButton(_ sender: Any) {
     }
     
+    
+    
     @objc func keyboardWasShown(notification: Notification){
         // Получаем размер клавиатуры
         let info = notification.userInfo! as NSDictionary
