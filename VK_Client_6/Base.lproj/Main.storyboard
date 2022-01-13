@@ -13,7 +13,7 @@
         <!--Login Form Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginFormController" customModule="VK_Client_6" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AppLoginView" id="BYZ-38-t0r" customClass="LoginFormController" customModule="VK_Client_6" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleAspectFit" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -123,7 +123,7 @@
         <!--Web Access View Controller-->
         <scene sceneID="yCj-ZJ-Tax">
             <objects>
-                <viewController id="wCt-Zx-y6N" customClass="WebAccessViewController" customModule="VK_Client_6" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WEBAccessView" id="wCt-Zx-y6N" customClass="WebAccessViewController" customModule="VK_Client_6" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0NP-cp-MzY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

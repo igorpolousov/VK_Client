@@ -6,32 +6,44 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginFormController: UIViewController {
+    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var userName: UITextField!
     @IBOutlet weak var password: UITextField!
-    @IBAction func enterButton(_ sender: Any) {
+    
+    @IBAction func enterButton(_ sender: Any?) {
+        if let userName = userName.text {
+            if let password = password.text {
+                authFireBase.signIn(withEmail: userName, password: password) { authResult, error in
+                    if let error = error {
+                        self.showLoginError(title: "Неверное имя пользователя или пароль", text: error.localizedDescription)
+                        return
+                    }
+                    self.showWEBAccessView()
+                }
+            }
+        }
     }
+    
     @IBAction func singInButton(_ sender: Any) {
+        if let userName = userName.text {
+            if let password = password.text {
+                authFireBase.createUser(withEmail: userName, password: password) { authResult, error in
+                    if let error = error {
+                        self.showLoginError(title: "Ошибка при создании пользователя", text: error.localizedDescription)
+                    }
+                    self.enterButton(nil)
+                }
+            }
+        }
     }
     
-    @objc func keyboardWasShown(notification: Notification){
-        // Получаем размер клавиатуры
-        let info = notification.userInfo! as NSDictionary
-        let kbSize = (info.value(forKey: UIResponder.keyboardFrameEndUserInfoKey) as! NSValue).cgRectValue.size
-        let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: kbSize.height, right: 0.0)
-        // Добавим отступ внизу UIScrollView равный размеру клавиатуры
-        self.scrollView?.contentInset = contentInsets
-        scrollView?.scrollIndicatorInsets = contentInsets
-    }
-    
-    // когда клавиатура исчезает
-    @objc func keyboardWillBeHidden(notification: Notification){
-        // устанавливем отсуп снизу UIScrollView, равным нулю
-        let contenInsets = UIEdgeInsets.zero
-        scrollView?.contentInset = contenInsets
-    }
+
+    let authFireBase = Auth.auth()
+    var token:AuthStateDidChangeListenerHandle!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -51,18 +63,56 @@ class LoginFormController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    @objc func hideKeyboard(){
-        self.scrollView?.endEditing(true)
-    }
-    
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         let hideKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         // присваеваем его UIScrollview
         scrollView?.addGestureRecognizer(hideKeyboardGesture)
         
+        token = authFireBase.addStateDidChangeListener({ auth, user in
+            guard user != nil else { return }
+        })
+        
+    }
+    @objc func keyboardWasShown(notification: Notification){
+        // Получаем размер клавиатуры
+        let info = notification.userInfo! as NSDictionary
+        let kbSize = (info.value(forKey: UIResponder.keyboardFrameEndUserInfoKey) as! NSValue).cgRectValue.size
+        let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: kbSize.height, right: 0.0)
+        // Добавим отступ внизу UIScrollView равный размеру клавиатуры
+        self.scrollView?.contentInset = contentInsets
+        scrollView?.scrollIndicatorInsets = contentInsets
     }
     
+    // когда клавиатура исчезает
+    @objc func keyboardWillBeHidden(notification: Notification){
+        // устанавливем отсуп снизу UIScrollView, равным нулю
+        let contenInsets = UIEdgeInsets.zero
+        scrollView?.contentInset = contenInsets
+    }
+    @objc func hideKeyboard(){
+        self.scrollView?.endEditing(true)
+    }
+    
+    func showLoginError(title: String?, text: String?) {
+        // создаём Alert контроллер
+        let alert = UIAlertController(title: title, message: text, preferredStyle: .alert)
+        // Создаём кнопку для UIAlertController
+        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        // добавляем кнопку на UIAlertController
+        alert.addAction(action)
+        // показываем UIAlertController
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func showWEBAccessView() {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "WEBAccessView") else { return }
+        if let window = self.view.window {
+            window.rootViewController = vc
+        }
+                
+    }
 //    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
 //        // Проверяем данные
 //        let checkResult = checkUserData()
@@ -84,16 +134,7 @@ class LoginFormController: UIViewController {
 //        }
 //    }
     
-    func showLoginError(title: String?, text: String?) {
-        // создаём Alert контроллер
-        let alert = UIAlertController(title: title, message: text, preferredStyle: .alert)
-        // Создаём кнопку для UIAlertController
-        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        // добавляем кнопку на UIAlertController
-        alert.addAction(action)
-        // показываем UIAlertController
-        present(alert, animated: true, completion: nil)
-    }
+ 
 
 }
 
