@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wCt-Zx-y6N">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -33,7 +33,7 @@
                                         <color key="textColor" systemColor="systemPurpleColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="253" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Имя пользователя a" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IKe-f0-7vh">
+                                    <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="253" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Введите e-mail" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IKe-f0-7vh">
                                         <rect key="frame" x="107" y="167" width="200" height="34"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="Sm1-t9-mWH"/>
@@ -47,7 +47,7 @@
                                         <color key="textColor" systemColor="systemPurpleColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Пароль 1" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DRA-N4-EZg">
+                                    <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Введите пароль" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DRA-N4-EZg">
                                         <rect key="frame" x="107" y="268" width="200" height="34"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="64A-F2-ow4"/>
@@ -65,16 +65,30 @@
                                             <action selector="enterButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zjm-9m-oQQ"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6RT-ow-vZY">
+                                        <rect key="frame" x="133" y="379" width="166" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="23"/>
+                                        <state key="normal" title="Регистрация">
+                                            <color key="titleColor" systemColor="systemOrangeColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="enterButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SbB-6x-OIa"/>
+                                            <action selector="singInButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aXT-K3-8bR"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="DRA-N4-EZg" firstAttribute="top" secondItem="M2U-La-Md7" secondAttribute="bottom" constant="20" id="2PB-7g-dga"/>
+                                    <constraint firstItem="6RT-ow-vZY" firstAttribute="leading" secondItem="Ydi-y3-f8a" secondAttribute="leading" id="8xk-JW-5gp"/>
                                     <constraint firstAttribute="bottom" secondItem="KO6-AE-slo" secondAttribute="bottom" constant="448" id="9gR-di-kxb"/>
                                     <constraint firstItem="IKe-f0-7vh" firstAttribute="top" secondItem="sXU-hE-E0O" secondAttribute="bottom" constant="20" id="9x6-jo-mDd"/>
                                     <constraint firstItem="IKe-f0-7vh" firstAttribute="centerX" secondItem="3vg-JZ-WmD" secondAttribute="centerX" id="DyV-DN-0rv"/>
                                     <constraint firstItem="Ydi-y3-f8a" firstAttribute="centerX" secondItem="3vg-JZ-WmD" secondAttribute="centerX" id="Ew8-UV-hU6"/>
                                     <constraint firstItem="KO6-AE-slo" firstAttribute="centerX" secondItem="3vg-JZ-WmD" secondAttribute="centerX" id="P6Q-Bk-Ce8"/>
                                     <constraint firstAttribute="trailing" secondItem="IKe-f0-7vh" secondAttribute="trailing" constant="107" id="Q66-ik-Tku"/>
+                                    <constraint firstItem="6RT-ow-vZY" firstAttribute="top" secondItem="KO6-AE-slo" secondAttribute="bottom" constant="17" id="UFs-s0-cFm"/>
+                                    <constraint firstItem="6RT-ow-vZY" firstAttribute="trailing" secondItem="sXU-hE-E0O" secondAttribute="trailing" id="Wcw-Ac-I5D"/>
                                     <constraint firstItem="M2U-La-Md7" firstAttribute="top" secondItem="IKe-f0-7vh" secondAttribute="bottom" constant="20" id="Z5h-F7-d4X"/>
                                     <constraint firstItem="DRA-N4-EZg" firstAttribute="centerX" secondItem="3vg-JZ-WmD" secondAttribute="centerX" id="ZeH-J1-avG"/>
                                     <constraint firstItem="sXU-hE-E0O" firstAttribute="centerX" secondItem="3vg-JZ-WmD" secondAttribute="centerX" id="d73-8W-x4O"/>
@@ -104,7 +118,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="61" y="-615"/>
+            <point key="canvasLocation" x="-733.33333333333337" y="93.75"/>
         </scene>
         <!--Web Access View Controller-->
         <scene sceneID="yCj-ZJ-Tax">

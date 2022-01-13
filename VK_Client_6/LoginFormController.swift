@@ -13,6 +13,8 @@ class LoginFormController: UIViewController {
     @IBOutlet weak var password: UITextField!
     @IBAction func enterButton(_ sender: Any) {
     }
+    @IBAction func singInButton(_ sender: Any) {
+    }
     
     @objc func keyboardWasShown(notification: Notification){
         // Получаем размер клавиатуры
@@ -61,30 +63,30 @@ class LoginFormController: UIViewController {
         
     }
     
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        // Проверяем данные
-        let checkResult = checkUserData()
-        // Если данные неверны, покажем ошибку
-        if !checkResult {
-            showLoginError()
-        }
-            // Вернём результат
-            return checkResult
-        }
+//    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+//        // Проверяем данные
+//        let checkResult = checkUserData()
+//        // Если данные неверны, покажем ошибку
+//        if !checkResult {
+//            showLoginError()
+//        }
+//            // Вернём результат
+//            return checkResult
+//        }
+//
+//    func checkUserData() -> Bool {
+//        let login = userName.text
+//        let passwords = password.text
+//        if login == "a" && passwords == "1"{
+//            return true
+//        } else {
+//            return false
+//        }
+//    }
     
-    func checkUserData() -> Bool {
-        let login = userName.text
-        let passwords = password.text
-        if login == "a" && passwords == "1"{
-            return true
-        } else {
-            return false
-        }
-    }
-    
-    func showLoginError() {
+    func showLoginError(title: String?, text: String?) {
         // создаём Alert контроллер
-        let alert = UIAlertController(title: "Ошибка", message: "Введены неверные данные пользователя", preferredStyle: .alert)
+        let alert = UIAlertController(title: title, message: text, preferredStyle: .alert)
         // Создаём кнопку для UIAlertController
         let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         // добавляем кнопку на UIAlertController
