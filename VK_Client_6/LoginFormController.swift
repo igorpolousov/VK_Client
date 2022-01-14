@@ -72,6 +72,7 @@ class LoginFormController: UIViewController {
         
         token = authFireBase.addStateDidChangeListener({ auth, user in
             guard user != nil else { return }
+            self.showWEBAccessView()
         })
         
     }
