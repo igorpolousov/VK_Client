@@ -7,12 +7,16 @@
 
 import UIKit
 import WebKit
+import Firebase
 
 class WebAccessViewController: UIViewController, WKNavigationDelegate {
     
     var webView: WKWebView!
     var urlComponents = URLComponents()
     let session = URLSession.shared
+   
+    
+    let authFireBase = Auth.auth()
     
     override func loadView() {
         webView = WKWebView()
@@ -40,12 +44,16 @@ class WebAccessViewController: UIViewController, WKNavigationDelegate {
         print(request)
         
         webView.load(request)
+
     }
+  
+    
+
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
         
         guard let url = navigationResponse.response.url, url.path == "/blank.html", let fragment = url.fragment  else {
-            let urlResponse = navigationResponse.response.url
+            //let urlResponse = navigationResponse.response.url
             decisionHandler(.allow)
             return
         }

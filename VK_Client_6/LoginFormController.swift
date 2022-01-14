@@ -14,6 +14,11 @@ class LoginFormController: UIViewController {
     @IBOutlet weak var userName: UITextField!
     @IBOutlet weak var password: UITextField!
     
+    let authFireBase = Auth.auth()
+    var token:AuthStateDidChangeListenerHandle!
+    
+
+    
     @IBAction func enterButton(_ sender: Any?) {
         if let userName = userName.text {
             if let password = password.text {
@@ -42,8 +47,7 @@ class LoginFormController: UIViewController {
     }
     
 
-    let authFireBase = Auth.auth()
-    var token:AuthStateDidChangeListenerHandle!
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -74,8 +78,10 @@ class LoginFormController: UIViewController {
             guard user != nil else { return }
             self.showWEBAccessView()
         })
-        
+       
     }
+    
+    
     @objc func keyboardWasShown(notification: Notification){
         // Получаем размер клавиатуры
         let info = notification.userInfo! as NSDictionary
@@ -108,35 +114,13 @@ class LoginFormController: UIViewController {
     }
     
     func showWEBAccessView() {
-        guard let vc = storyboard?.instantiateViewController(withIdentifier: "WEBAccessView") else { return }
-        if let window = self.view.window {
-            window.rootViewController = vc
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "WEBAccessView") as? WebAccessViewController {
+            if let window = self.view.window {
+                window.rootViewController = vc
+            }
         }
-                
     }
-//    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-//        // Проверяем данные
-//        let checkResult = checkUserData()
-//        // Если данные неверны, покажем ошибку
-//        if !checkResult {
-//            showLoginError()
-//        }
-//            // Вернём результат
-//            return checkResult
-//        }
-//
-//    func checkUserData() -> Bool {
-//        let login = userName.text
-//        let passwords = password.text
-//        if login == "a" && passwords == "1"{
-//            return true
-//        } else {
-//            return false
-//        }
-//    }
     
- 
-
 }
 
  extension UIImageView {
