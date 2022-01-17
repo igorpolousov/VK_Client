@@ -18,7 +18,13 @@ class LoginFormController: UIViewController {
     var token: AuthStateDidChangeListenerHandle!
     
     @IBAction func enterButton(_ sender: Any) {
-        
+        if let email = userName.text {
+            if let password = password.text {
+                
+            }
+        }
+    }
+    @IBAction func signUp(_ sender: Any) {
     }
     
     override func viewWillAppear(_ animated: Bool) {
