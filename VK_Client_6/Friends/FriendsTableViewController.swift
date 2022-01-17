@@ -43,14 +43,7 @@ class FriendsTableViewController: UITableViewController, UISearchResultsUpdating
         navigationItem.searchController = searchController
         definesPresentationContext = true
         
-        friendsObserver = getDataFromRealm()
-        
-        self.token = self.friendsObserver?.observe(on: .main, { [weak self] (changes: RealmCollectionChange) in
-            self?.friendsObserver = getDataFromRealm()
-            friendsName = fromRealmToTable((self?.friendsObserver)!)
-            self?.friendsToLoad = convertedNames(friendsName)
-            self?.tableView.reloadData()
-        })
+       
        
         //tableView.register(UINib(nibName: "Header", bundle: nil), forHeaderFooterViewReuseIdentifier: "Header")
         
@@ -70,9 +63,18 @@ class FriendsTableViewController: UITableViewController, UISearchResultsUpdating
             self.parse(json: data)
             print("FRIENDS NAME")
             print(friendsName)
-            //addToRealmDataBase()
+            addToRealmDataBase()
             //return
         }
+        
+        friendsObserver = getDataFromRealm()
+        
+        self.token = self.friendsObserver?.observe(on: .main, { [weak self] (changes: RealmCollectionChange) in
+            self?.friendsObserver = getDataFromRealm()
+            friendsName = fromRealmToTable((self?.friendsObserver)!)
+            self?.friendsToLoad = convertedNames(friendsName)
+            self?.tableView.reloadData()
+        })
         
        
         friendsToLoad = sortedFriends
@@ -84,7 +86,7 @@ class FriendsTableViewController: UITableViewController, UISearchResultsUpdating
         if let jsonContainer = try? decoder.decode(FriendsContainer.self, from: json) {
             friends = jsonContainer.response.items
             print(friends)
-           // transfer()
+            transfer()
         }
     }
     

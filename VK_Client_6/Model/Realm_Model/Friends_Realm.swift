@@ -10,10 +10,21 @@ import RealmSwift
 
 // 1. Класс для объекта Realm
 class FriendR: Object, Codable {
+    
+    override init() {
+        Realm.Configuration.defaultConfiguration = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
+        }
+    
     @objc dynamic var id: Int = 0
     @objc dynamic var lastName: String = ""
     @objc dynamic var firstName: String = ""
     @objc dynamic var photo50: String = ""
+    
+    override static func primaryKey() -> String? {
+            return "id"
+        }
+
+
 }
 
 // 2.Массив с объектами класса Realm

@@ -19,13 +19,7 @@ class PhotosViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        photosObserver = getPhotosDataFromRealm()
-
-        self.token = self.photosObserver?.observe(on: .main, { [weak self] (changes: RealmCollectionChange) in
-            self?.photosObserver = getPhotosDataFromRealm()
-            photosFromRealmToTable((self?.photosObserver!)!)
-            self?.tableView.reloadData()
-        })
+       
         
         urlComponents.scheme = "https"
         urlComponents.host = "api.vk.com"
@@ -43,6 +37,14 @@ class PhotosViewController: UITableViewController {
             return
         }
         
+        photosObserver = getPhotosDataFromRealm()
+
+        self.token = self.photosObserver?.observe(on: .main, { [weak self] (changes: RealmCollectionChange) in
+            self?.photosObserver = getPhotosDataFromRealm()
+            photosFromRealmToTable((self?.photosObserver!)!)
+            self?.tableView.reloadData()
+        })
+        
     }
     
     func parse(json: Data) {
@@ -55,6 +57,7 @@ class PhotosViewController: UITableViewController {
 
     // MARK: Table data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("PHOTOS FOR TABLE \(photosForTable)")
         return photosForTable.count
     }
 
