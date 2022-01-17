@@ -6,10 +6,16 @@
 //
 
 import UIKit
+import Firebase
 
 class NewsTableViewController: UITableViewController {
+    let authFireBase = Auth.auth()
 
-
+    @IBAction func singOut(_ sender: UIBarButtonItem) {
+      try?  authFireBase.signOut()
+    }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,5 +51,13 @@ class NewsTableViewController: UITableViewController {
         cell.newsText.text = info.newsText
 
         return cell
+    }
+    
+    func showLoginViewController() {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "AppLoginView") as? LoginFormController {
+            if let window = self.view.window {
+                window.rootViewController = vc
+            }
+        }
     }
 }

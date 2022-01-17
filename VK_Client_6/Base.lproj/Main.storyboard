@@ -564,7 +564,13 @@
                             <outlet property="delegate" destination="QgY-GE-LhG" id="Gx7-dU-TOR"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="News" id="yXg-cI-PSl"/>
+                    <navigationItem key="navigationItem" title="News" id="yXg-cI-PSl">
+                        <barButtonItem key="rightBarButtonItem" title="SingOut" id="1FU-p2-e9v">
+                            <connections>
+                                <action selector="singOut:" destination="QgY-GE-LhG" id="gcC-Kx-BrK"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="we1-EX-Cfn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
