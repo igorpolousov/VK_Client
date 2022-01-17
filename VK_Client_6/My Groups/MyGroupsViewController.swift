@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class MyGroupsViewController: UITableViewController {
 
@@ -13,10 +14,15 @@ class MyGroupsViewController: UITableViewController {
     var urlComponents = URLComponents()
     let session = URLSession.shared
     
+    var groupsObserver: Results<GroupR>?
+    var token: NotificationToken?
+    
+    var groupsToLoad = [GroupT]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getGroupsDataFromRealm()
+       
 
         urlComponents.scheme = "https"
         urlComponents.host = "api.vk.com"
@@ -32,15 +38,22 @@ class MyGroupsViewController: UITableViewController {
         let url = urlComponents.url!
         if let data =  try? Data(contentsOf: url) {
             self.parse(json: data)
-            addGroupsToRealmDataBase()
+            //addGroupsToRealmDataBase()
         }
+        groupsObserver = getGroupsDataFromRealm()
+        
+        self.token = self.groupsObserver?.observe(on: .main, { [weak self] (changes: RealmCollectionChange) in
+            self?.groupsObserver = getGroupsDataFromRealm()
+            self?.groupsToLoad = groupsFromRealmToTable((self?.groupsObserver!)!)
+            self?.tableView.reloadData()
+        })
     }
     
     func parse(json: Data) {
         let decoder = JSONDecoder()
         if let jsonContainer = try? decoder.decode(GroupContainer.self, from: json) {
             myGroups = jsonContainer.response.items
-            transferGroup()
+            //transferGroup()
             print(myGroups)
         }
     }
@@ -52,14 +65,14 @@ class MyGroupsViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return groupsTable.count
+        return groupsToLoad.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyGroupsCell", for: indexPath) as! MyGroupsViewCell
         
-        let group = groupsTable[indexPath.row]
+        let group = groupsToLoad[indexPath.row]
         
         cell.groupName.text = group.groupName
         if let url = URL(string: group.photoUrl) {
@@ -73,17 +86,25 @@ class MyGroupsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            groupsTable.remove(at: indexPath.row)
+            groupsToLoad.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
     
-    func addGroup(segue: UIStoryboardSegue) {
+   @IBAction func addGroup(segue: UIStoryboardSegue) {
         
         if segue.identifier == "addGroup" {
-            guard let allGroupsController = segue.source as? AllGroupsTableViewController else {return}
-            
-            allGroupsController.allGroups = groupsTable
+            let allGroupsController = segue.source as! AllGroupsTableViewController
+            if let indexPath = allGroupsController.tableView.indexPathForSelectedRow {
+                let group = allGroupsController.groupsSearch[indexPath.row]
+                if !myGroups.contains(group) {
+                    myGroups.append(group)
+                    transferGroup()
+                    print("GROUP ARRAY \(groupRArray)")
+                    addGroupsToRealmDataBase()
+                    tableView.reloadData()
+                }
+            }
         }
     }
 }

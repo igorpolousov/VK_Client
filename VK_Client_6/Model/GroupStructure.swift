@@ -43,16 +43,9 @@ struct Group: Codable {
         case isClosed = "is_closed"
     }
 }
-//import UIKit
-//
-//struct Group {
-//    var groupName: String
-//    var groupImage: UIImage
-//}
-//
-//extension Group: Equatable {
-//    static func == (lhs: Group, rhs: Group) -> Bool{
-//        return lhs.groupName == rhs.groupName &&
-//            lhs.groupImage == rhs.groupImage
-//    }
-//}
+
+extension Group: Equatable {
+    static func == (lhs: Group, rhs: Group) -> Bool{
+        return lhs.id == rhs.id
+    }
+}

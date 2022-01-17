@@ -14,7 +14,7 @@ class AllGroupsTableViewController: UITableViewController, UISearchBarDelegate {
     var urlComponents = URLComponents()
     let session = URLSession.shared
     
-    var groupsSearch = [GroupSearch]()
+    var groupsSearch = [Group]()
     var allGroups: [GroupT]?
     
     //let searchController = UISearchController(searchResultsController: nil)
@@ -57,6 +57,18 @@ class AllGroupsTableViewController: UITableViewController, UISearchBarDelegate {
         return cell
     }
     
+//    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+//        if let vc = storyboard?.instantiateViewController(withIdentifier: "MyGroups") as? MyGroupsViewController {
+//            let groupToAdd = groupsSearch[indexPath.row]
+//            print("GROUP TO ADD \(groupToAdd)")
+//            myGroups.append(groupToAdd)
+//            print("MY GROUPS \(myGroups)")
+//            transferGroup()
+//            navigationController?.pushViewController(vc, animated: true)
+//            
+//        }
+//    }
+    
     func updateSearch(_ text: String) {
         urlComponents.scheme = "https"
         urlComponents.host = "api.vk.com"
@@ -78,7 +90,7 @@ class AllGroupsTableViewController: UITableViewController, UISearchBarDelegate {
     
     func parse(json: Data) {
         let decoder = JSONDecoder()
-        if let jsonContainer = try? decoder.decode(GroupsSearchContainer.self, from: json) {
+        if let jsonContainer = try? decoder.decode(GroupContainer.self, from: json) {
             groupsSearch = jsonContainer.response.items
             print(groupsSearch)
         }

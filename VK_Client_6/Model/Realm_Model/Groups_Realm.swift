@@ -38,7 +38,9 @@ func transferGroup() {
 
 // 4. Добавление массива с объектами Realm в базу данных
 func addGroupsToRealmDataBase() {
+    // Массив групп для Realm
     let realmGroupsData = List<GroupR>()
+    // Добавляем группы в массив Realm
     for groupR in groupRArray {
         realmGroupsData.append(groupR)
     }
@@ -53,31 +55,46 @@ func addGroupsToRealmDataBase() {
         print(error)
     }
 }
+
+
 // Структура для таблицы
 struct GroupT {
     var groupName: String
     var photoUrl: String
 }
 // Массив для таблицы
-var groupsTable = [GroupT]()
+
 // 5. Получение данных для таблицы
-func getGroupsDataFromRealm() {
+func getGroupsDataFromRealm() -> Results<GroupR> {
+    var observerArray: Results<GroupR>!
     do {
         let realm = try Realm()
-        let getDataFromRealm = Array(realm.objects(GroupR.self))
-        for data in getDataFromRealm {
-            var groupT = GroupT(groupName: "", photoUrl: "")
-            groupT.groupName = data.groupName
-            groupT.photoUrl = data.photo
-            groupsTable.append(groupT)
-        }
+        let realmObserver = realm.objects(GroupR.self)
+        observerArray = realmObserver
+//        let getDataFromRealm = Array(realm.objects(GroupR.self))
+//        for data in getDataFromRealm {
+//            var groupT = GroupT(groupName: "", photoUrl: "")
+//            groupT.groupName = data.groupName
+//            groupT.photoUrl = data.photo
+//            groupsTable.append(groupT)
+//        }
         
     } catch {
         print(error)
     }
-    print("GROUPS TABLE")
-    print(groupsTable)
+    return observerArray
 }
 
+// 6. Перевод данных из Realm в данные таблицы
+func groupsFromRealmToTable(_ array: Results<GroupR>) -> [GroupT] {
+    var groupsTable = [GroupT]()
+    for data in array {
+        var a = GroupT(groupName: "", photoUrl: "")
+        a.groupName = data.groupName
+        a.photoUrl = data.photo
+        groupsTable.append(a)
+    }
+    return groupsTable
+}
 
 

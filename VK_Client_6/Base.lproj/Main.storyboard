@@ -246,7 +246,7 @@
         <!--My Groups-->
         <scene sceneID="K9u-Tp-nBf">
             <objects>
-                <tableViewController id="bCI-Bo-nhH" customClass="MyGroupsViewController" customModule="VK_Client_6" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="MyGroups" id="bCI-Bo-nhH" customClass="MyGroupsViewController" customModule="VK_Client_6" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="8cE-89-AgP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
