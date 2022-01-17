@@ -19,7 +19,14 @@ class PhotosViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       
+        photosObserver = getPhotosDataFromRealm()
+        print("PHOTOS OBSERVER \(photosObserver)")
+        
+        self.token = self.photosObserver?.observe(on: .main, { [weak self] (changes: RealmCollectionChange) in
+            self?.photosObserver = getPhotosDataFromRealm()
+            photosFromRealmToTable((self?.photosObserver!)!)
+            self?.tableView.reloadData()
+        })
         
         urlComponents.scheme = "https"
         urlComponents.host = "api.vk.com"
@@ -37,13 +44,9 @@ class PhotosViewController: UITableViewController {
             return
         }
         
-        photosObserver = getPhotosDataFromRealm()
-
-        self.token = self.photosObserver?.observe(on: .main, { [weak self] (changes: RealmCollectionChange) in
-            self?.photosObserver = getPhotosDataFromRealm()
-            photosFromRealmToTable((self?.photosObserver!)!)
-            self?.tableView.reloadData()
-        })
+        
+        
+        
         
     }
     

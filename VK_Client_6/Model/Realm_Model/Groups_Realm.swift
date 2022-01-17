@@ -79,3 +79,5 @@ func getGroupsDataFromRealm() {
     print(groupsTable)
 }
 
+
+
