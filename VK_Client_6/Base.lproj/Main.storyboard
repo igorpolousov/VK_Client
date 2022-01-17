@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wCt-Zx-y6N">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
@@ -64,12 +64,25 @@
                                             <action selector="enterButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zjm-9m-oQQ"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oBV-59-aeN">
+                                        <rect key="frame" x="132" y="364" width="151" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="23"/>
+                                        <state key="normal" title="Регистрация">
+                                            <color key="titleColor" systemColor="systemOrangeColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="enterButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sRU-wq-qoq"/>
+                                            <action selector="signUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6Ja-mi-Guf"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="DRA-N4-EZg" firstAttribute="top" secondItem="M2U-La-Md7" secondAttribute="bottom" constant="20" id="2PB-7g-dga"/>
+                                    <constraint firstItem="oBV-59-aeN" firstAttribute="leading" secondItem="E1o-wr-nA4" secondAttribute="leading" constant="132" id="4Ye-ng-6Cp"/>
                                     <constraint firstAttribute="bottom" secondItem="KO6-AE-slo" secondAttribute="bottom" constant="448" id="9gR-di-kxb"/>
                                     <constraint firstItem="IKe-f0-7vh" firstAttribute="top" secondItem="sXU-hE-E0O" secondAttribute="bottom" constant="20" id="9x6-jo-mDd"/>
+                                    <constraint firstItem="oBV-59-aeN" firstAttribute="centerX" secondItem="KO6-AE-slo" secondAttribute="centerX" id="C10-uW-HtP"/>
                                     <constraint firstItem="IKe-f0-7vh" firstAttribute="centerX" secondItem="3vg-JZ-WmD" secondAttribute="centerX" id="DyV-DN-0rv"/>
                                     <constraint firstItem="Ydi-y3-f8a" firstAttribute="centerX" secondItem="3vg-JZ-WmD" secondAttribute="centerX" id="Ew8-UV-hU6"/>
                                     <constraint firstItem="KO6-AE-slo" firstAttribute="centerX" secondItem="3vg-JZ-WmD" secondAttribute="centerX" id="P6Q-Bk-Ce8"/>
@@ -77,6 +90,7 @@
                                     <constraint firstItem="M2U-La-Md7" firstAttribute="top" secondItem="IKe-f0-7vh" secondAttribute="bottom" constant="20" id="Z5h-F7-d4X"/>
                                     <constraint firstItem="DRA-N4-EZg" firstAttribute="centerX" secondItem="3vg-JZ-WmD" secondAttribute="centerX" id="ZeH-J1-avG"/>
                                     <constraint firstItem="sXU-hE-E0O" firstAttribute="centerX" secondItem="3vg-JZ-WmD" secondAttribute="centerX" id="d73-8W-x4O"/>
+                                    <constraint firstItem="oBV-59-aeN" firstAttribute="top" secondItem="KO6-AE-slo" secondAttribute="bottom" constant="2" id="dCf-eD-CbL"/>
                                     <constraint firstItem="Ydi-y3-f8a" firstAttribute="top" secondItem="E1o-wr-nA4" secondAttribute="top" constant="70" id="dKy-ed-eZt"/>
                                     <constraint firstItem="sXU-hE-E0O" firstAttribute="top" secondItem="Ydi-y3-f8a" secondAttribute="bottom" constant="20" id="ga0-AP-Lrn"/>
                                     <constraint firstItem="M2U-La-Md7" firstAttribute="centerX" secondItem="3vg-JZ-WmD" secondAttribute="centerX" id="jEM-if-Wz5"/>

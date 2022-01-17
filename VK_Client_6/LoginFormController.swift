@@ -17,14 +17,34 @@ class LoginFormController: UIViewController {
     let authFireBase = Auth.auth()
     var token: AuthStateDidChangeListenerHandle!
     
-    @IBAction func enterButton(_ sender: Any) {
+    @IBAction func enterButton(_ sender: Any?) {
         if let email = userName.text {
             if let password = password.text {
-                
+                authFireBase.signIn(withEmail: email, password: password) { authResult, error in
+                    if let error = error {
+                        self.showLoginError(title: "SingIn Error", text: error.localizedDescription)
+                        return
+                    }
+                    
+                    self.showHomeViewController()
+                }
             }
         }
     }
+    
+    
     @IBAction func signUp(_ sender: Any) {
+        if let email = userName.text {
+            if let password = password.text {
+                authFireBase.createUser(withEmail: email, password: password) { authResult, error in
+                    if let error = error {
+                        self.showLoginError(title: "SingUp Error", text: error.localizedDescription)
+                        return
+                    }
+                    self.enterButton(nil)
+                }
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -87,13 +107,21 @@ class LoginFormController: UIViewController {
 //        return checkResult
 //    }
     
-    func checkUserData() -> Bool {
-        let login = userName.text
-        let passwords = password.text
-        if login == "a" && passwords == "1"{
-            return true
-        } else {
-            return false
+//    func checkUserData() -> Bool {
+//        let login = userName.text
+//        let passwords = password.text
+//        if login == "a" && passwords == "1"{
+//            return true
+//        } else {
+//            return false
+//        }
+//    }
+    
+    func showHomeViewController() {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "VKLoginView") as? WebAccessViewController {
+            if let window = self.view.window {
+                window.rootViewController = vc
+            }
         }
     }
     
