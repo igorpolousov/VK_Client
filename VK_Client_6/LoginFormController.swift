@@ -6,15 +6,46 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginFormController: UIViewController {
+    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var userName: UITextField!
     @IBOutlet weak var password: UITextField!
+    
+    let authFireBase = Auth.auth()
+    var token: AuthStateDidChangeListenerHandle!
+    
     @IBAction func enterButton(_ sender: Any) {
+        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // подписываемся на два уведомления
+        // уведомление при появлении клавиатуры
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWasShown), name: UIResponder.keyboardWillShowNotification, object: nil)
+        //уведомление при исчезновении клавиатуры
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillBeHidden(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let hideKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        // присваеваем его UIScrollview
+        scrollView?.addGestureRecognizer(hideKeyboardGesture)
+        
+    }
+    
+    // метод отписки при исчезновении контроллера с экрана
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
     
     @objc func keyboardWasShown(notification: Notification){
         // Получаем размер клавиатуры
@@ -33,46 +64,22 @@ class LoginFormController: UIViewController {
         scrollView?.contentInset = contenInsets
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        // подписываемся на два уведомления
-        // уведомление при появлении клавиатуры
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWasShown), name: UIResponder.keyboardWillShowNotification, object: nil)
-        //уведомление при исчезновении клавиатуры
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillBeHidden(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-    
-    // метод отписки при исчезновении контроллера с экрана
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
+
     
     @objc func hideKeyboard(){
         self.scrollView?.endEditing(true)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        let hideKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
-        // присваеваем его UIScrollview
-        scrollView?.addGestureRecognizer(hideKeyboardGesture)
-        
-    }
-    
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        // Проверяем данные
-        let checkResult = checkUserData()
-        // Если данные неверны, покажем ошибку
-        if !checkResult {
-            showLoginError()
-        }
-            // Вернём результат
-            return checkResult
-        }
+//    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+//        // Проверяем данные
+//        let checkResult = checkUserData()
+//        // Если данные неверны, покажем ошибку
+//        if !checkResult {
+//            showLoginError()
+//        }
+//        // Вернём результат
+//        return checkResult
+//    }
     
     func checkUserData() -> Bool {
         let login = userName.text
@@ -84,9 +91,9 @@ class LoginFormController: UIViewController {
         }
     }
     
-    func showLoginError() {
+    func showLoginError(title: String?, text: String?) {
         // создаём Alert контроллер
-        let alert = UIAlertController(title: "Ошибка", message: "Введены неверные данные пользователя", preferredStyle: .alert)
+        let alert = UIAlertController(title: title, message: text, preferredStyle: .alert)
         // Создаём кнопку для UIAlertController
         let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         // добавляем кнопку на UIAlertController
