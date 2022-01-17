@@ -13,6 +13,7 @@ class NewsTableViewController: UITableViewController {
 
     @IBAction func singOut(_ sender: UIBarButtonItem) {
       try?  authFireBase.signOut()
+        showLoginViewController()
     }
     
     

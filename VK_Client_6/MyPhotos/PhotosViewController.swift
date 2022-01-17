@@ -20,7 +20,7 @@ class PhotosViewController: UITableViewController {
         super.viewDidLoad()
         
         photosObserver = getPhotosDataFromRealm()
-        print("PHOTOS OBSERVER \(photosObserver)")
+        //print("PHOTOS OBSERVER \(photosObserver)")
         
         self.token = self.photosObserver?.observe(on: .main, { [weak self] (changes: RealmCollectionChange) in
             self?.photosObserver = getPhotosDataFromRealm()
@@ -42,12 +42,7 @@ class PhotosViewController: UITableViewController {
             self.parse(json: data)
             //addPhotosToRealmDataBase()
             return
-        }
-        
-        
-        
-        
-        
+        } 
     }
     
     func parse(json: Data) {
@@ -67,14 +62,13 @@ class PhotosViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellPhotoMy", for: indexPath)
         let url = photosForTable[indexPath.row]
-
+        
         if let url = URL(string: url) {
-                if let data = try? Data(contentsOf: url) {
-                    cell.imageView?.image = UIImage(data: data)
-                }
+            if let data = try? Data(contentsOf: url) {
+                cell.imageView?.image = UIImage(data: data)
+            }
         }
         return cell
-        
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

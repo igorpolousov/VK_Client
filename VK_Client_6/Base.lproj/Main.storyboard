@@ -32,7 +32,7 @@
                                         <color key="textColor" systemColor="systemPurpleColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="253" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Имя пользователя a" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IKe-f0-7vh">
+                                    <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="253" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="e-mail" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IKe-f0-7vh">
                                         <rect key="frame" x="107" y="167" width="200" height="34"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="Sm1-t9-mWH"/>
@@ -46,7 +46,7 @@
                                         <color key="textColor" systemColor="systemPurpleColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Пароль 1" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DRA-N4-EZg">
+                                    <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DRA-N4-EZg">
                                         <rect key="frame" x="107" y="268" width="200" height="34"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="64A-F2-ow4"/>
@@ -64,8 +64,8 @@
                                             <action selector="enterButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zjm-9m-oQQ"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oBV-59-aeN">
-                                        <rect key="frame" x="132" y="364" width="151" height="40"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oBV-59-aeN">
+                                        <rect key="frame" x="131.5" y="364" width="151" height="40"/>
                                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="23"/>
                                         <state key="normal" title="Регистрация">
                                             <color key="titleColor" systemColor="systemOrangeColor"/>
@@ -79,7 +79,7 @@
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="DRA-N4-EZg" firstAttribute="top" secondItem="M2U-La-Md7" secondAttribute="bottom" constant="20" id="2PB-7g-dga"/>
-                                    <constraint firstItem="oBV-59-aeN" firstAttribute="leading" secondItem="E1o-wr-nA4" secondAttribute="leading" constant="132" id="4Ye-ng-6Cp"/>
+                                    <constraint firstItem="oBV-59-aeN" firstAttribute="leading" relation="lessThanOrEqual" secondItem="E1o-wr-nA4" secondAttribute="leading" constant="132" id="4Ye-ng-6Cp"/>
                                     <constraint firstAttribute="bottom" secondItem="KO6-AE-slo" secondAttribute="bottom" constant="448" id="9gR-di-kxb"/>
                                     <constraint firstItem="IKe-f0-7vh" firstAttribute="top" secondItem="sXU-hE-E0O" secondAttribute="bottom" constant="20" id="9x6-jo-mDd"/>
                                     <constraint firstItem="oBV-59-aeN" firstAttribute="centerX" secondItem="KO6-AE-slo" secondAttribute="centerX" id="C10-uW-HtP"/>
