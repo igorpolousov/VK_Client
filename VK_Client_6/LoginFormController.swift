@@ -59,6 +59,12 @@ class LoginFormController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        token = authFireBase.addStateDidChangeListener({ auth, user in
+            guard user != nil else { return }
+            self.showHomeViewController()
+        })
+        
         let hideKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         // присваеваем его UIScrollview
         scrollView?.addGestureRecognizer(hideKeyboardGesture)
