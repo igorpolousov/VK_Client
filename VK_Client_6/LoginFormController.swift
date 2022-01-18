@@ -16,16 +16,23 @@ class LoginFormController: UIViewController {
     
     let authFireBase = Auth.auth()
     var token: AuthStateDidChangeListenerHandle!
+    let ref = Database.database(url: "https://vc-client-default-rtdb.europe-west1.firebasedatabase.app").reference(withPath: "userData")
+    
+    var userData = [FireBase]()
     
     @IBAction func enterButton(_ sender: Any?) {
         if let email = userName.text {
             if let password = password.text {
                 authFireBase.signIn(withEmail: email, password: password) { authResult, error in
+                    
+                    if let userIds = authResult?.user.uid {
+                        self.addUserIdToFireBase(userId: userIds)
+                    }
+                    
                     if let error = error {
                         self.showLoginError(title: "SingIn Error", text: error.localizedDescription)
                         return
                     }
-                    
                     self.showHomeViewController()
                 }
             }
@@ -61,8 +68,25 @@ class LoginFormController: UIViewController {
         super.viewDidLoad()
         
         token = authFireBase.addStateDidChangeListener({ auth, user in
+            if let userIds = user?.uid {
+                self.addUserIdToFireBase(userId: userIds)
+            }
+            
             guard user != nil else { return }
             self.showHomeViewController()
+        })
+        
+        ref.observe(.value, with: { snapshot in
+            print(snapshot.value as Any)
+            
+            var userData = [FireBase]()
+            for child in snapshot.children {
+                if let snapshot = child as? DataSnapshot, let user = FireBase(snapshot: snapshot) {
+                    userData.append(user)
+                }
+            }
+            self.userData = userData
+            let _ = self.userData.map { print($0.iserId, $0.groupAdded)}
         })
         
         let hideKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
@@ -77,6 +101,12 @@ class LoginFormController: UIViewController {
         
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    func addUserIdToFireBase(userId: String) {
+        let user = FireBase(userId: userId, groupAdded: "")
+        let userContainerRef = self.ref.child(user.iserId)
+        userContainerRef.setValue(user.toAnyObject())
     }
     
     @objc func keyboardWasShown(notification: Notification){

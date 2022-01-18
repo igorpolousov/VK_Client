@@ -60,12 +60,15 @@ class PhotosViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellPhotoMy", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellPhotoMy", for: indexPath) as! MyPhotosTableViewCell
+        
         let url = photosForTable[indexPath.row]
+        
+        cell.imageTitle.text = "Image title"
         
         if let url = URL(string: url) {
             if let data = try? Data(contentsOf: url) {
-                cell.imageView?.image = UIImage(data: data)
+                cell.imagePhotoLoad.image = UIImage(data: data)
             }
         }
         return cell

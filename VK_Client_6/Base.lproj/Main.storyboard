@@ -585,22 +585,56 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellPhotoMy" textLabel="h48-Cg-gAE" style="IBUITableViewCellStyleDefault" id="kiJ-sl-9iV">
-                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellPhotoMy" rowHeight="50" id="jie-A0-951" customClass="MyPhotosTableViewCell" customModule="VK_Client_6" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kiJ-sl-9iV" id="lcJ-yP-guh">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jie-A0-951" id="ia9-We-5Av">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="h48-Cg-gAE">
-                                            <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Image Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZZJ-6U-1Zn">
+                                            <rect key="frame" x="75" y="14.5" width="200" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="bzz-2p-VLd"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gNu-fz-fIf" customClass="ShadowView" customModule="VK_Client_6" customModuleProvider="target">
+                                            <rect key="frame" x="25" y="7.5" width="35" height="35"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="35" id="CkB-vW-Rv7"/>
+                                                <constraint firstAttribute="width" constant="35" id="qKf-PB-gCG"/>
+                                            </constraints>
+                                        </view>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="h72-Cr-yrQ">
+                                            <rect key="frame" x="25" y="7.5" width="35" height="35"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="35" id="95X-BX-xCV"/>
+                                                <constraint firstAttribute="width" constant="35" id="rPq-Gc-dYJ"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="ZZJ-6U-1Zn" secondAttribute="trailing" constant="139" id="JWV-vS-8uo"/>
+                                        <constraint firstItem="ZZJ-6U-1Zn" firstAttribute="leading" secondItem="h72-Cr-yrQ" secondAttribute="trailing" constant="15" id="VNj-3S-JOQ"/>
+                                        <constraint firstItem="h72-Cr-yrQ" firstAttribute="centerX" secondItem="gNu-fz-fIf" secondAttribute="centerX" id="a9a-Tl-dAS"/>
+                                        <constraint firstItem="ZZJ-6U-1Zn" firstAttribute="centerY" secondItem="ia9-We-5Av" secondAttribute="centerY" id="sZR-YQ-1fX"/>
+                                        <constraint firstItem="h72-Cr-yrQ" firstAttribute="leading" secondItem="ia9-We-5Av" secondAttribute="leading" constant="25" id="tdH-Ze-T9l"/>
+                                        <constraint firstItem="h72-Cr-yrQ" firstAttribute="centerY" secondItem="gNu-fz-fIf" secondAttribute="centerY" id="uTL-Yu-6RA"/>
+                                        <constraint firstItem="h72-Cr-yrQ" firstAttribute="centerY" secondItem="ia9-We-5Av" secondAttribute="centerY" id="wzE-GE-cVF"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" header="YES"/>
+                                </accessibility>
+                                <connections>
+                                    <outlet property="imagePhoto" destination="gNu-fz-fIf" id="Dz7-Ht-YcH"/>
+                                    <outlet property="imagePhotoLoad" destination="h72-Cr-yrQ" id="KOV-oQ-2Ou"/>
+                                    <outlet property="imageTitle" destination="ZZJ-6U-1Zn" id="CkH-Ce-jA4"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

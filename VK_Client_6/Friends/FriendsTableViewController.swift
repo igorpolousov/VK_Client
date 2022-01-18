@@ -32,7 +32,6 @@ class FriendsTableViewController: UITableViewController, UISearchResultsUpdating
         return !searchBarIsEmpty && searchController.isActive
     }
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         

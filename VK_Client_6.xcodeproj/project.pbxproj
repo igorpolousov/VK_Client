@@ -33,6 +33,7 @@
 		C21D50BC2612813D00E23769 /* MyGroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21D50BB2612813D00E23769 /* MyGroupsViewController.swift */; };
 		C21D50C12612815F00E23769 /* MyGroupsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21D50C02612815F00E23769 /* MyGroupsViewCell.swift */; };
 		C26311C42795BAF60045DD4E /* FireBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26311C32795BAF60045DD4E /* FireBase.swift */; };
+		C26311C72795C3C90045DD4E /* MyPhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26311C62795C3C90045DD4E /* MyPhotosTableViewCell.swift */; };
 		C28C48312624DD5B00ED4135 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28C48302624DD5B00ED4135 /* Session.swift */; };
 		C2965C522768B8340050ED7E /* WebAccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2965C512768B8340050ED7E /* WebAccessViewController.swift */; };
 		C296D629276E25F1001A6426 /* PhotosStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = C296D628276E25F1001A6426 /* PhotosStructure.swift */; };
@@ -100,6 +101,7 @@
 		C21D50BB2612813D00E23769 /* MyGroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupsViewController.swift; sourceTree = "<group>"; };
 		C21D50C02612815F00E23769 /* MyGroupsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupsViewCell.swift; sourceTree = "<group>"; };
 		C26311C32795BAF60045DD4E /* FireBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBase.swift; sourceTree = "<group>"; };
+		C26311C62795C3C90045DD4E /* MyPhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPhotosTableViewCell.swift; sourceTree = "<group>"; };
 		C28C48302624DD5B00ED4135 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		C2965C512768B8340050ED7E /* WebAccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAccessViewController.swift; sourceTree = "<group>"; };
 		C296D628276E25F1001A6426 /* PhotosStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosStructure.swift; sourceTree = "<group>"; };
@@ -288,6 +290,7 @@
 			isa = PBXGroup;
 			children = (
 				C296D631276E4B8B001A6426 /* PhotosViewController.swift */,
+				C26311C62795C3C90045DD4E /* MyPhotosTableViewCell.swift */,
 				C296D62D276E45AC001A6426 /* MyPhotosViewController.swift */,
 				C296D62F276E462B001A6426 /* MyPhotosViewCell.swift */,
 			);
@@ -456,6 +459,7 @@
 				C21D508526126B6E00E23769 /* NewsTableViewCell.swift in Sources */,
 				C21D508F26126B9A00E23769 /* FriendsTableViewCell.swift in Sources */,
 				C21D509426126BB700E23769 /* AllGroupsTableViewController.swift in Sources */,
+				C26311C72795C3C90045DD4E /* MyPhotosTableViewCell.swift in Sources */,
 				C296D629276E25F1001A6426 /* PhotosStructure.swift in Sources */,
 				C296D632276E4B8B001A6426 /* PhotosViewController.swift in Sources */,
 				C21D50A126126C1200E23769 /* FriendsPhotoController.swift in Sources */,
