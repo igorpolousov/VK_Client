@@ -19,6 +19,7 @@ class LoginFormController: UIViewController {
     let ref = Database.database(url: "https://vc-client-default-rtdb.europe-west1.firebasedatabase.app").reference(withPath: "userData")
     
     var userData = [FireBase]()
+   
     
     @IBAction func enterButton(_ sender: Any?) {
         if let email = userName.text {
@@ -26,6 +27,7 @@ class LoginFormController: UIViewController {
                 authFireBase.signIn(withEmail: email, password: password) { authResult, error in
                     
                     if let userIds = authResult?.user.uid {
+                        userIdSave = userIds
                         self.addUserIdToFireBase(userId: userIds)
                     }
                     
@@ -69,6 +71,7 @@ class LoginFormController: UIViewController {
         
         token = authFireBase.addStateDidChangeListener({ auth, user in
             if let userIds = user?.uid {
+                userIdSave = userIds
                 self.addUserIdToFireBase(userId: userIds)
             }
             

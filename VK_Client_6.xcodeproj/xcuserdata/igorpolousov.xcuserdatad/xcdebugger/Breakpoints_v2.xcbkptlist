@@ -7,32 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "1DA0CF46-AF7D-4634-ADDF-C715EC91B3CC"
-            shouldBeEnabled = "No"
+            uuid = "2E5A7FDC-861F-429F-B891-7280F4056F69"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "VK_Client_6/LoginFormController.swift"
+            filePath = "VK_Client_6/My Groups/MyGroupsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "enterButton(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "395CAE36-9BC2-40D4-8790-ACB58BB18BDB"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "VK_Client_6/LoginFormController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
-            landmarkName = "enterButton(_:)"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
+            landmarkName = "addUserIdToFireBase(userId:groupName:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

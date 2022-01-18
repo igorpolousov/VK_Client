@@ -41,3 +41,4 @@ class FireBase {
     }
 }
 
+var userIdSave: String!
