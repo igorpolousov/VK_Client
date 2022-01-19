@@ -32,7 +32,6 @@ class FriendsTableViewController: UITableViewController, UISearchResultsUpdating
         return !searchBarIsEmpty && searchController.isActive
     }
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,9 +41,7 @@ class FriendsTableViewController: UITableViewController, UISearchResultsUpdating
         searchController.searchBar.placeholder = "Enter text for search"
         navigationItem.searchController = searchController
         definesPresentationContext = true
-        
-       
-       
+
         //tableView.register(UINib(nibName: "Header", bundle: nil), forHeaderFooterViewReuseIdentifier: "Header")
         
         urlComponents.scheme = "https"
@@ -61,6 +58,7 @@ class FriendsTableViewController: UITableViewController, UISearchResultsUpdating
         let url = urlComponents.url!
         if let data = try? Data(contentsOf: url) {
             self.parse(json: data)
+            parseRealm(json: data)
             print("FRIENDS NAME")
             print(friendsName)
             addToRealmDataBase()
@@ -75,10 +73,8 @@ class FriendsTableViewController: UITableViewController, UISearchResultsUpdating
             self?.friendsToLoad = convertedNames(friendsName)
             self?.tableView.reloadData()
         })
-        
-       
+
         friendsToLoad = sortedFriends
-     
     }
     
     func parse(json: Data) {
@@ -86,7 +82,7 @@ class FriendsTableViewController: UITableViewController, UISearchResultsUpdating
         if let jsonContainer = try? decoder.decode(FriendsContainer.self, from: json) {
             friends = jsonContainer.response.items
             print(friends)
-            transfer()
+            //transfer()
         }
     }
     
