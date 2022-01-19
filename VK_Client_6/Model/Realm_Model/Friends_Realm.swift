@@ -9,6 +9,15 @@ import Foundation
 import RealmSwift
 
 // 1. Класс для объекта Realm
+struct FriendsRContainer: Codable {
+    let response: FriendsRResponse
+}
+
+struct FriendsRResponse: Codable {
+    let count: Int
+    let items: [FriendR]
+}
+
 class FriendR: Object, Codable {
 
     @objc dynamic var id: Int = 0
@@ -35,6 +44,14 @@ class FriendR: Object, Codable {
 // 2.Массив с объектами класса Realm
 var friendRArray = [FriendR()]
 
+func parseRealm(json: Data) {
+    let decoder = JSONDecoder()
+    if let jsonContainer = try? decoder.decode(FriendsRContainer.self, from: json) {
+        friendRArray = jsonContainer.response.items
+        print("FRIENDS R NAME")
+        print(friendRArray)
+    }
+}
 // 3.Перевод данных в массив с объектами класса Realm
 func transfer() {
     for data in friends {
