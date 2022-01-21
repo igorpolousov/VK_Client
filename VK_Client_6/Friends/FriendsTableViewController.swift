@@ -137,6 +137,10 @@ class FriendsTableViewController: UITableViewController, UISearchResultsUpdating
         }
     }
     
+    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        return friendsToLoad.map { $0.sectionName.uppercased() }
+    }
+    
     // 5. Получение текста из поисковой строки
     func updateSearchResults(for searchController: UISearchController) {
         filteredResults(searchController.searchBar.text!)
