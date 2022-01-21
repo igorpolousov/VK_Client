@@ -7,6 +7,7 @@
 
 import UIKit
 import RealmSwift
+import Firebase
 
 class MyGroupsViewController: UITableViewController {
 
@@ -18,6 +19,9 @@ class MyGroupsViewController: UITableViewController {
     var token: NotificationToken?
     
     var groupsToLoad = [GroupT]()
+    
+    let ref = Database.database(url: "https://vc-client-default-rtdb.europe-west1.firebasedatabase.app").reference(withPath: "userData")
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,6 +101,11 @@ class MyGroupsViewController: UITableViewController {
             let allGroupsController = segue.source as! AllGroupsTableViewController
             if let indexPath = allGroupsController.tableView.indexPathForSelectedRow {
                 let group = allGroupsController.groupsSearch[indexPath.row]
+                
+                if let userId = userIdSave {
+                    addUserIdToFireBase(userId: userId, groupName: group.screenName)
+                }
+                
                 if !myGroups.contains(group) {
                     myGroups.append(group)
                     transferGroup()
@@ -106,6 +115,12 @@ class MyGroupsViewController: UITableViewController {
                 }
             }
         }
+    }
+    
+    func addUserIdToFireBase(userId: String, groupName: String) {
+        let user = FireBase(userId: userId, groupAdded: groupName)
+        let userContainerRef = self.ref.child(user.iserId)
+        userContainerRef.setValue(user.toAnyObject())
     }
 }
 

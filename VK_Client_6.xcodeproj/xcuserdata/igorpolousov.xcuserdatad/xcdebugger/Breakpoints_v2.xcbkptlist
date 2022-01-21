@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "12FC4538-A52D-4A48-BC28-1549B6FD7CD8"
+            uuid = "2E5A7FDC-861F-429F-B891-7280F4056F69"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VK_Client_6/My Groups/MyGroupsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
-            landmarkName = "tableView(_:numberOfRowsInSection:)"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
+            landmarkName = "addUserIdToFireBase(userId:groupName:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

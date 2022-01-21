@@ -32,7 +32,6 @@ class FriendsTableViewController: UITableViewController, UISearchResultsUpdating
         return !searchBarIsEmpty && searchController.isActive
     }
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -136,6 +135,10 @@ class FriendsTableViewController: UITableViewController, UISearchResultsUpdating
             vc.friendPhoto = friendsToLoad[indexPath.section].sectionObjects[indexPath.row].photo50
             navigationController?.pushViewController(vc, animated: true)
         }
+    }
+    
+    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        return friendsToLoad.map { $0.sectionName.uppercased() }
     }
     
     // 5. Получение текста из поисковой строки
