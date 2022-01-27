@@ -16,10 +16,19 @@ class LikesAndCommentsCell: UITableViewCell {
     @IBAction func likeButton(_ sender: Any) {
     }
     
+    @IBAction func commentTapped(_ sender: Any) {
+    }
+    
+    @IBOutlet var comments: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        comments.tintColor = .systemBlue
+        comments.image = UIImage.init(systemName: "bubble.right")
+        heartImage.tintColor = .systemRed
+        heartImage.image = UIImage.init(systemName: "heart")
+        heartsCounter.textColor = .systemRed
+        heartsCounter.text = "0"
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

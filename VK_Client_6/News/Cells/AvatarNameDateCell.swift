@@ -9,16 +9,17 @@ import UIKit
 
 class AvatarNameDateCell: UITableViewCell {
     
-    @IBOutlet var shadowView: UIView!
+    @IBOutlet var shadowView: ShadowView!
     @IBOutlet var avatarImage: UIImageView!
     @IBOutlet var userName: UILabel!
-    @IBOutlet var Date: UILabel!
+    @IBOutlet var date: UILabel!
     
     
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        avatarImage.applyDesign()
+        shadowView.applyDesignShadow()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
