@@ -622,7 +622,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NewsDescription" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zbr-sl-OwW">
-                                            <rect key="frame" x="31" y="11" width="361" height="21"/>
+                                            <rect key="frame" x="43" y="11" width="337" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -630,9 +630,9 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="zbr-sl-OwW" firstAttribute="centerY" secondItem="eFo-jW-vdr" secondAttribute="centerY" id="UNk-ho-Uaj"/>
-                                        <constraint firstItem="zbr-sl-OwW" firstAttribute="leading" secondItem="eFo-jW-vdr" secondAttribute="leadingMargin" constant="11" id="cLt-JP-8gE"/>
+                                        <constraint firstItem="zbr-sl-OwW" firstAttribute="leading" secondItem="eFo-jW-vdr" secondAttribute="leadingMargin" constant="23" id="cLt-JP-8gE"/>
                                         <constraint firstItem="zbr-sl-OwW" firstAttribute="top" secondItem="eFo-jW-vdr" secondAttribute="topMargin" id="dAi-oh-yCe"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="zbr-sl-OwW" secondAttribute="trailing" constant="2" id="oSV-bx-pDf"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="zbr-sl-OwW" secondAttribute="trailing" constant="14" id="oSV-bx-pDf"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -647,18 +647,64 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ama-81-IsC">
-                                            <rect key="frame" x="36" y="6" width="337" height="128"/>
+                                            <rect key="frame" x="48" y="6" width="313" height="128"/>
                                         </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="Ama-81-IsC" firstAttribute="bottom" secondItem="ALJ-ZK-FPy" secondAttribute="bottomMargin" id="VMA-Rl-ghc"/>
                                         <constraint firstItem="Ama-81-IsC" firstAttribute="top" secondItem="ALJ-ZK-FPy" secondAttribute="topMargin" constant="-5" id="a4k-jD-sS5"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="Ama-81-IsC" secondAttribute="trailing" constant="21" id="b13-HN-gyZ"/>
-                                        <constraint firstItem="Ama-81-IsC" firstAttribute="leading" secondItem="ALJ-ZK-FPy" secondAttribute="leadingMargin" constant="16" id="mIX-bg-t4p"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Ama-81-IsC" secondAttribute="trailing" constant="33" id="b13-HN-gyZ"/>
+                                        <constraint firstItem="Ama-81-IsC" firstAttribute="leading" secondItem="ALJ-ZK-FPy" secondAttribute="leadingMargin" constant="28" id="mIX-bg-t4p"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="newsImage" destination="Ama-81-IsC" id="4Yc-E3-fch"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="50" id="ybR-Qf-VHP" customClass="LikesAndCommentsCell" customModule="VK_Client_6" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="631.5" width="414" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ybR-Qf-VHP" id="ecp-xw-Q9B">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wgj-Q0-MOz">
+                                            <rect key="frame" x="43" y="6" width="48" height="33"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="48" id="76k-3r-FFN"/>
+                                            </constraints>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                            <connections>
+                                                <action selector="likeButton:" destination="ybR-Qf-VHP" eventType="touchUpInside" id="vQi-en-qW6"/>
+                                            </connections>
+                                        </button>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O0C-cS-Q77">
+                                            <rect key="frame" x="31" y="8" width="48" height="33"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ZQ-Kc-Gmk">
+                                            <rect key="frame" x="87" y="14" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="wgj-Q0-MOz" firstAttribute="leading" secondItem="ecp-xw-Q9B" secondAttribute="leadingMargin" constant="23" id="9N2-6R-ifl"/>
+                                        <constraint firstItem="O0C-cS-Q77" firstAttribute="centerY" secondItem="7ZQ-Kc-Gmk" secondAttribute="centerY" id="Fja-9W-Ktq"/>
+                                        <constraint firstItem="O0C-cS-Q77" firstAttribute="centerY" secondItem="ecp-xw-Q9B" secondAttribute="centerY" id="Ua4-LJ-iTw"/>
+                                        <constraint firstItem="7ZQ-Kc-Gmk" firstAttribute="top" secondItem="ecp-xw-Q9B" secondAttribute="topMargin" constant="3" id="VSQ-93-qdq"/>
+                                        <constraint firstItem="wgj-Q0-MOz" firstAttribute="trailing" secondItem="O0C-cS-Q77" secondAttribute="trailing" id="VSm-10-M4O"/>
+                                        <constraint firstItem="wgj-Q0-MOz" firstAttribute="leading" secondItem="O0C-cS-Q77" secondAttribute="leading" id="Xqc-0r-RaY"/>
+                                        <constraint firstItem="7ZQ-Kc-Gmk" firstAttribute="leading" secondItem="wgj-Q0-MOz" secondAttribute="trailing" constant="8" id="dzr-87-fcs"/>
+                                        <constraint firstItem="wgj-Q0-MOz" firstAttribute="top" secondItem="ecp-xw-Q9B" secondAttribute="topMargin" constant="-5" id="qJx-JB-hUP"/>
+                                        <constraint firstItem="O0C-cS-Q77" firstAttribute="top" secondItem="ecp-xw-Q9B" secondAttribute="topMargin" constant="-3" id="rZm-7e-3Bo"/>
+                                        <constraint firstItem="wgj-Q0-MOz" firstAttribute="bottom" secondItem="ecp-xw-Q9B" secondAttribute="bottomMargin" id="rnP-r1-e8q"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="heartImage" destination="O0C-cS-Q77" id="ChN-ni-i36"/>
+                                    <outlet property="heartsCounter" destination="7ZQ-Kc-Gmk" id="hne-nn-oaB"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

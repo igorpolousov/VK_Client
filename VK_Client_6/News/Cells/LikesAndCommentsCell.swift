@@ -8,7 +8,15 @@
 import UIKit
 
 class LikesAndCommentsCell: UITableViewCell {
-
+    
+    @IBOutlet var heartImage: UIImageView!
+    
+    @IBOutlet var heartsCounter: UILabel!
+    
+    @IBAction func likeButton(_ sender: Any) {
+    }
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
