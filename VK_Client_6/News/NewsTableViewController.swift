@@ -10,18 +10,32 @@ import Firebase
 
 class NewsTableViewController: UITableViewController {
     let authFireBase = Auth.auth()
+    
+    var urlComponents = URLComponents()
+    let session = URLSession.shared
 
     @IBAction func singOut(_ sender: UIBarButtonItem) {
       try?  authFireBase.signOut()
         showLoginViewController()
     }
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-       
+        
+        urlComponents.scheme = "https"
+        urlComponents.host = "api.vk.com"
+        urlComponents.path = "/method/newsfeed.get"
+        urlComponents.queryItems = [
+            URLQueryItem(name: "user_ids", value: Session.shared.userID),
+            //URLQueryItem(name: "order", value: "name"),
+            URLQueryItem(name: "filter", value: "post"),
+            URLQueryItem(name: "access_token", value: Session.shared.token),
+            URLQueryItem(name: "v", value: "5.131")
+        ]
+ 
+        let url = urlComponents.url
+        print("NEWS URL")
+        print(url as Any)
     }
 
     // MARK: - Table view data source
