@@ -33,9 +33,18 @@ class NewsTableViewController: UITableViewController {
             URLQueryItem(name: "v", value: "5.131")
         ]
  
-        let url = urlComponents.url
-        print("NEWS URL")
-        print(url as Any)
+        let url = urlComponents.url!
+        if let data = try? Data(contentsOf: url) {
+            print("DATA NEWS")
+            print(data)
+        }
+        
+        let request = URLRequest(url: url)
+        let task = session.dataTask(with: request) { data, urlResponse, error in
+            let json = try? JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.fragmentsAllowed)
+            print(json)
+        }
+        task.resume()
     }
 
     // MARK: - Table view data source
