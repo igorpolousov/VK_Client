@@ -62,6 +62,7 @@ class WebAccessViewController: UIViewController, WKNavigationDelegate {
         
         guard let token = params["access_token"], let userId = params["user_id"] else { return }
         Session.shared.token = token
+        print(token)
         Session.shared.userID = userId
         performSegue(withIdentifier: "segue", sender: nil)
         decisionHandler(.cancel)

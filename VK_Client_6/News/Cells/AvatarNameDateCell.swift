@@ -8,6 +8,13 @@
 import UIKit
 
 class AvatarNameDateCell: UITableViewCell {
+    
+    @IBOutlet var shadowView: UIView!
+    @IBOutlet var avatarImage: UIImageView!
+    @IBOutlet var userName: UILabel!
+    @IBOutlet var Date: UILabel!
+    
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()
