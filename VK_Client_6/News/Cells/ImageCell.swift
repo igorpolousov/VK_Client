@@ -8,7 +8,10 @@
 import UIKit
 
 class ImageCell: UITableViewCell {
-
+    
+    
+    @IBOutlet var newsImage: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
