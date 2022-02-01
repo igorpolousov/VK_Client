@@ -35,16 +35,20 @@ class NewsTableViewController: UITableViewController {
  
         let url = urlComponents.url!
         if let data = try? Data(contentsOf: url) {
-            print("DATA NEWS")
-            print(data)
+            parse(json: data)
+           
         }
-        
-       
+  
     }
 
     
     func parse(json: Data) {
-        
+        let decoder = JSONDecoder()
+        if let jsonContainer = try?  decoder.decode(NewsContainer.self, from: json) {
+            newsGroup = jsonContainer.response.groups
+            print("NEWS GROUP")
+            print(newsGroup)
+        }
     }
     
     // MARK: - Table view data source
@@ -64,10 +68,16 @@ class NewsTableViewController: UITableViewController {
         
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AvatarNameCell") as! AvatarNameDateCell
-            cell.date.text = news[indexPath.section].newsDate
-            cell.userName.text = news[indexPath.section].userName
-            cell.avatarImage.image = news[indexPath.section].userImage
-            return cell
+            let newsGroupCell = newsGroup[indexPath.row]
+            cell.date.text = "Unknown"
+            cell.userName.text = newsGroupCell.name
+            if let url = URL(string: newsGroupCell.photo200) {
+                if let data = try? Data(contentsOf: url) {
+                    cell.avatarImage.image = UIImage(data: data)
+                    return cell
+                }
+            }
+           
             
         }
         

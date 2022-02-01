@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+var newsGroup = [NewsGroup]()
 
 
 import Foundation
