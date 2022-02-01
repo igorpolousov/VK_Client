@@ -710,9 +710,16 @@
                                                 <constraint firstAttribute="width" constant="50" id="cSe-Dx-CrX"/>
                                             </constraints>
                                         </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8VF-cb-Qzq">
+                                            <rect key="frame" x="217" y="15" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="wgj-Q0-MOz" firstAttribute="leading" secondItem="ecp-xw-Q9B" secondAttribute="leadingMargin" constant="23" id="4XA-Gc-wIB"/>
+                                        <constraint firstItem="8VF-cb-Qzq" firstAttribute="bottom" secondItem="wgj-Q0-MOz" secondAttribute="bottom" id="5sT-G6-beh"/>
                                         <constraint firstItem="Gse-ew-Q98" firstAttribute="centerX" secondItem="0ar-Fz-4pB" secondAttribute="centerX" id="CZS-J3-4jA"/>
                                         <constraint firstItem="O0C-cS-Q77" firstAttribute="centerY" secondItem="7ZQ-Kc-Gmk" secondAttribute="centerY" constant="-1.5" id="DV3-F4-G57"/>
                                         <constraint firstItem="wgj-Q0-MOz" firstAttribute="top" secondItem="ecp-xw-Q9B" secondAttribute="topMargin" constant="-5" id="Iys-5y-0Om"/>
@@ -721,7 +728,9 @@
                                         <constraint firstItem="7ZQ-Kc-Gmk" firstAttribute="leading" secondItem="O0C-cS-Q77" secondAttribute="trailing" constant="6" id="PNY-p7-icn"/>
                                         <constraint firstItem="7ZQ-Kc-Gmk" firstAttribute="top" secondItem="ecp-xw-Q9B" secondAttribute="topMargin" constant="3" id="RrE-sJ-wTO"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="Gse-ew-Q98" secondAttribute="bottom" constant="-3" id="hbc-pf-duK"/>
+                                        <constraint firstItem="8VF-cb-Qzq" firstAttribute="centerY" secondItem="ecp-xw-Q9B" secondAttribute="centerY" id="kou-YC-GTN"/>
                                         <constraint firstItem="Gse-ew-Q98" firstAttribute="trailing" secondItem="0ar-Fz-4pB" secondAttribute="trailing" id="mbS-0Z-4dd"/>
+                                        <constraint firstItem="8VF-cb-Qzq" firstAttribute="leading" secondItem="0ar-Fz-4pB" secondAttribute="trailing" constant="8" id="n0A-RH-X5V"/>
                                         <constraint firstItem="Gse-ew-Q98" firstAttribute="leading" secondItem="7ZQ-Kc-Gmk" secondAttribute="trailing" constant="30" id="nGE-gC-8DF"/>
                                         <constraint firstItem="O0C-cS-Q77" firstAttribute="top" secondItem="ecp-xw-Q9B" secondAttribute="topMargin" constant="-3" id="npO-Ss-Zga"/>
                                         <constraint firstItem="0ar-Fz-4pB" firstAttribute="bottom" secondItem="Gse-ew-Q98" secondAttribute="bottom" id="oFF-TB-QkH"/>
@@ -735,6 +744,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="comments" destination="Gse-ew-Q98" id="uxX-On-LuV"/>
+                                    <outlet property="commentsCounter" destination="8VF-cb-Qzq" id="gFe-0W-CA6"/>
                                     <outlet property="heartImage" destination="O0C-cS-Q77" id="ChN-ni-i36"/>
                                     <outlet property="heartsCounter" destination="7ZQ-Kc-Gmk" id="hne-nn-oaB"/>
                                 </connections>

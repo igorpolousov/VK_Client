@@ -13,6 +13,7 @@ class LikesAndCommentsCell: UITableViewCell {
     
     @IBOutlet var heartsCounter: UILabel!
     
+    @IBOutlet var commentsCounter: UILabel!
     @IBAction func likeButton(_ sender: Any) {
     }
     
@@ -25,6 +26,8 @@ class LikesAndCommentsCell: UITableViewCell {
         super.awakeFromNib()
         comments.tintColor = .systemBlue
         comments.image = UIImage.init(systemName: "bubble.right")
+        commentsCounter.tintColor = .systemBlue
+        commentsCounter.text = "0"
         heartImage.tintColor = .systemRed
         heartImage.image = UIImage.init(systemName: "heart")
         heartsCounter.textColor = .systemRed
