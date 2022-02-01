@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 var newsGroup = [NewsGroup]()
+var newsPost = [ResponseItem]()
 
 
 import Foundation
@@ -28,7 +29,7 @@ struct NewsContainer: Codable {
 // MARK: - Response
 struct NewsResponse: Codable {
     let items: [ResponseItem]
-    let groups: [NewsGroup]
+    let groups: [NewsGroup] // аватарка и назвние группы
     let profiles: [Profile]
     let nextFrom: String
 

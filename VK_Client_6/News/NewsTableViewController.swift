@@ -46,8 +46,10 @@ class NewsTableViewController: UITableViewController {
         let decoder = JSONDecoder()
         if let jsonContainer = try?  decoder.decode(NewsContainer.self, from: json) {
             newsGroup = jsonContainer.response.groups
+            newsPost = jsonContainer.response.items
             print("NEWS GROUP")
-            print(newsGroup)
+            //print(newsGroup)
+            print(newsPost)
         }
     }
     
@@ -55,7 +57,7 @@ class NewsTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return news.count
+        return newsPost.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -69,35 +71,35 @@ class NewsTableViewController: UITableViewController {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AvatarNameCell") as! AvatarNameDateCell
             let newsGroupCell = newsGroup[indexPath.row]
-            cell.date.text = "Unknown"
+            let epochTime = TimeInterval(newsPost[indexPath.section].date / 1000)
+            let date = Date(timeIntervalSince1970: epochTime)
+            cell.date.text = "\(date)"
             cell.userName.text = newsGroupCell.name
             if let url = URL(string: newsGroupCell.photo200) {
                 if let data = try? Data(contentsOf: url) {
                     cell.avatarImage.image = UIImage(data: data)
                     return cell
                 }
-            }
-           
-            
+            } 
         }
         
         if indexPath.row == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell") as! TextCell
-            let info = news[indexPath.section]
-            cell.newsDescription.text = info.newsText
+            let info = newsPost[indexPath.section]
+            cell.newsDescription.text = info.text
             return cell
         }
         
-        if indexPath.row == 2 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ImageCell") as! ImageCell
-            cell.newsImage.image = news[indexPath.section].newsImage
-            return cell
-        }
-        
-        if indexPath.row == 3 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "LikesComCell") as! LikesAndCommentsCell
-            return cell
-        }
+//        if indexPath.row == 2 {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "ImageCell") as! ImageCell
+//            cell.newsImage.image = news[indexPath.section].newsImage
+//            return cell
+//        }
+//
+//        if indexPath.row == 3 {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "LikesComCell") as! LikesAndCommentsCell
+//            return cell
+//        }
         
 //        let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as! NewsTableViewCell
 //
