@@ -10,6 +10,8 @@ import UIKit
 
 var newsGroup = [NewsGroup]()
 var newsPost = [ResponseItem]()
+var newsPhoto = [VideoElement]()
+var likes = [FluffyLikes]()
 
 
 import Foundation
@@ -28,7 +30,7 @@ struct NewsContainer: Codable {
 
 // MARK: - Response
 struct NewsResponse: Codable {
-    let items: [ResponseItem]
+    let items: [ResponseItem] // содержание поста текст фото
     let groups: [NewsGroup] // аватарка и назвние группы
     let profiles: [Profile]
     let nextFrom: String

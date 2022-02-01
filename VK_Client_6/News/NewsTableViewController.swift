@@ -90,16 +90,27 @@ class NewsTableViewController: UITableViewController {
             return cell
         }
         
-//        if indexPath.row == 2 {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "ImageCell") as! ImageCell
-//            cell.newsImage.image = news[indexPath.section].newsImage
-//            return cell
-//        }
-//
-//        if indexPath.row == 3 {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "LikesComCell") as! LikesAndCommentsCell
-//            return cell
-//        }
+        if indexPath.row == 2 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ImageCell") as! ImageCell
+            if let newsPhoto = newsPost[indexPath.section].photos?.items[indexPath.section].sizes {
+                if let string = newsPhoto[indexPath.section].url {
+                    if let url = URL(string: string) {
+                        if let data = try? Data(contentsOf: url) {
+                            cell.newsImage.image = UIImage(data: data)
+                            return cell
+                        }
+                    }
+                }
+            }
+        }
+
+        if indexPath.row == 3 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "LikesComCell") as! LikesAndCommentsCell
+            if let likesCount = newsPost[indexPath.section].likes {
+                cell.heartsCounter.text = "\(likesCount.count)"
+                return cell
+            }
+        }
         
 //        let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as! NewsTableViewCell
 //
