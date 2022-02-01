@@ -32,6 +32,7 @@
 		C21D50B326127D7200E23769 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21D50B226127D7200E23769 /* ShadowView.swift */; };
 		C21D50BC2612813D00E23769 /* MyGroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21D50BB2612813D00E23769 /* MyGroupsViewController.swift */; };
 		C21D50C12612815F00E23769 /* MyGroupsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21D50C02612815F00E23769 /* MyGroupsViewCell.swift */; };
+		C234B95327A93E6200EEC0A8 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = C234B95227A93E6200EEC0A8 /* Request.swift */; };
 		C26311C42795BAF60045DD4E /* FireBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26311C32795BAF60045DD4E /* FireBase.swift */; };
 		C26311C72795C3C90045DD4E /* MyPhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26311C62795C3C90045DD4E /* MyPhotosTableViewCell.swift */; };
 		C28C48312624DD5B00ED4135 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28C48302624DD5B00ED4135 /* Session.swift */; };
@@ -104,6 +105,7 @@
 		C21D50B226127D7200E23769 /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		C21D50BB2612813D00E23769 /* MyGroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupsViewController.swift; sourceTree = "<group>"; };
 		C21D50C02612815F00E23769 /* MyGroupsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupsViewCell.swift; sourceTree = "<group>"; };
+		C234B95227A93E6200EEC0A8 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		C26311C32795BAF60045DD4E /* FireBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBase.swift; sourceTree = "<group>"; };
 		C26311C62795C3C90045DD4E /* MyPhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPhotosTableViewCell.swift; sourceTree = "<group>"; };
 		C28C48302624DD5B00ED4135 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 				C21D507A26126B2800E23769 /* NewsStructure.swift */,
 				C21D50B226127D7200E23769 /* ShadowView.swift */,
 				C28C48302624DD5B00ED4135 /* Session.swift */,
+				C234B95227A93E6200EEC0A8 /* Request.swift */,
 				C296D6562771CF32001A6426 /* Realm_Model */,
 				C28C48352624DD7200ED4135 /* Header */,
 				C26311C52795BB090045DD4E /* FireBase */,
@@ -494,6 +497,7 @@
 				C28C48312624DD5B00ED4135 /* Session.swift in Sources */,
 				C21D502726124DEA00E23769 /* AppDelegate.swift in Sources */,
 				C2D0051327A26B42005CF835 /* ImageCell.swift in Sources */,
+				C234B95327A93E6200EEC0A8 /* Request.swift in Sources */,
 				C21D502926124DEA00E23769 /* SceneDelegate.swift in Sources */,
 				C21D50BC2612813D00E23769 /* MyGroupsViewController.swift in Sources */,
 				C26311C42795BAF60045DD4E /* FireBase.swift in Sources */,
