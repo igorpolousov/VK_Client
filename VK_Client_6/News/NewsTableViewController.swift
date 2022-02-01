@@ -71,7 +71,7 @@ class NewsTableViewController: UITableViewController {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AvatarNameCell") as! AvatarNameDateCell
             let newsGroupCell = newsGroup[indexPath.row]
-            let epochTime = TimeInterval(newsPost[indexPath.section].date / 1000)
+            let epochTime = TimeInterval(newsPost[indexPath.section].date)
             let date = Date(timeIntervalSince1970: epochTime)
             cell.date.text = "\(date)"
             cell.userName.text = newsGroupCell.name
