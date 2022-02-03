@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C2036BCE2617ED41004B96F2 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2036BCD2617ED41004B96F2 /* Header.swift */; };
 		C2036BD32617ED7A004B96F2 /* Header.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2036BD22617ED7A004B96F2 /* Header.xib */; };
+		C21D4DDF27ABE3EB00B9342F /* OperationClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21D4DDE27ABE3EB00B9342F /* OperationClasses.swift */; };
 		C21D502726124DEA00E23769 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21D502626124DEA00E23769 /* AppDelegate.swift */; };
 		C21D502926124DEA00E23769 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21D502826124DEA00E23769 /* SceneDelegate.swift */; };
 		C21D502E26124DEA00E23769 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C21D502C26124DEA00E23769 /* Main.storyboard */; };
@@ -76,6 +77,7 @@
 /* Begin PBXFileReference section */
 		C2036BCD2617ED41004B96F2 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		C2036BD22617ED7A004B96F2 /* Header.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Header.xib; sourceTree = "<group>"; };
+		C21D4DDE27ABE3EB00B9342F /* OperationClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationClasses.swift; sourceTree = "<group>"; };
 		C21D502326124DEA00E23769 /* VK_Client_6.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VK_Client_6.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C21D502626124DEA00E23769 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C21D502826124DEA00E23769 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 				C21D509826126BD600E23769 /* FriendsTableViewController.swift */,
 				C21D508E26126B9A00E23769 /* FriendsTableViewCell.swift */,
 				C2EABB232774945000497B43 /* FriendsExtensionForTable.swift */,
+				C21D4DDE27ABE3EB00B9342F /* OperationClasses.swift */,
 			);
 			path = Friends;
 			sourceTree = "<group>";
@@ -476,6 +479,7 @@
 				C21D50AA26126C4200E23769 /* FriendsPhotoCell.swift in Sources */,
 				C21D505E2612536D00E23769 /* LoginFormController.swift in Sources */,
 				C21D507126126AFC00E23769 /* FriendStructure.swift in Sources */,
+				C21D4DDF27ABE3EB00B9342F /* OperationClasses.swift in Sources */,
 				C296D65E2771F3F9001A6426 /* Photos_Realm.swift in Sources */,
 				C21D509926126BD600E23769 /* FriendsTableViewController.swift in Sources */,
 				C21D50B326127D7200E23769 /* ShadowView.swift in Sources */,
