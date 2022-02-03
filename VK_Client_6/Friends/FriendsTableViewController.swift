@@ -10,7 +10,8 @@ import RealmSwift
 
 class FriendsTableViewController: UITableViewController, UISearchResultsUpdating {
     
-
+    let queue = OperationQueue()
+    
     var urlComponents = URLComponents()
     let session = URLSession.shared
     
