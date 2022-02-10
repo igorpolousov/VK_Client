@@ -17,6 +17,9 @@ class PhotoService {
     let decoder = JSONDecoder()
     
     func getPhotosPromise() -> Promise<[Photo]> {
+        
+        
+        
         return Promise<[Photo]> { seal in
             var urlComponents = URLComponents()
             
@@ -31,19 +34,21 @@ class PhotoService {
             let url = urlComponents.url!
             let request = URLRequest(url: url)
             
-            let response = session.dataTask(with: request) { data, response, error in
+            let task = session.dataTask(with: request) { data, urlResponse, error in
                 if let error = error{
                     seal.reject(error)
                 }
-                if let data = try? Data(contentsOf: url) {
-                    if let jsonContainer = try? self.decoder.decode(PhotosConteiner.self, from: data) {
-                        photos = jsonContainer.response.items
-                        seal.fulfill(photos)
-                    }
+            }
+            task.resume()
+            
+            if let data = try? Data(contentsOf: url) {
+                if let jsonContainer = try? self.decoder.decode(PhotosConteiner.self, from: data) {
+                    photos = jsonContainer.response.items
+                    seal.fulfill(photos)
                 }
             }
-            
-            
+ 
         }
+        
     }
 }
