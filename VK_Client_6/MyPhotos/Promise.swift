@@ -9,9 +9,13 @@ import Foundation
 import PromiseKit
 import Alamofire
 import Network
+import RealmSwift
 
 class PhotoService {
-
+    
+    let session = URLSession.shared
+    let decoder = JSONDecoder()
+    
     func getPhotosPromise() -> Promise<[Photo]> {
         return Promise<[Photo]> { seal in
             var urlComponents = URLComponents()
@@ -25,18 +29,16 @@ class PhotoService {
             ]
             
             let url = urlComponents.url!
+            let request = URLRequest(url: url)
             
-            AF.request(url).responseJSON { response in
-                if let error = response.error {
+            let response = session.dataTask(with: request) { data, response, error in
+                if let error = error{
                     seal.reject(error)
                 }
-                if let data = response.data {
-                    do {
-                        let jsonContainer = try JSONDecoder().decode(PhotosConteiner.self, from: data)
+                if let data = try? Data(contentsOf: url) {
+                    if let jsonContainer = try? self.decoder.decode(PhotosConteiner.self, from: data) {
                         photos = jsonContainer.response.items
                         seal.fulfill(photos)
-                    } catch {
-                        seal.reject("no photos" as! Error)
                     }
                 }
             }
