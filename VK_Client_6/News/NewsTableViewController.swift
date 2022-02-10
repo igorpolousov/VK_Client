@@ -25,6 +25,7 @@ class NewsTableViewController: UITableViewController {
         super.viewDidLoad()
         
         DispatchQueue.global().async(group: dispatchGroup) {
+            
             self.urlComponents.scheme = "https"
             self.urlComponents.host = "api.vk.com"
             self.urlComponents.path = "/method/newsfeed.get"
@@ -53,9 +54,9 @@ class NewsTableViewController: UITableViewController {
         if let jsonContainer = try?  decoder.decode(NewsContainer.self, from: json) {
             newsGroup = jsonContainer.response.groups
             newsPost = jsonContainer.response.items
-            //print("NEWS GROUP")
-            //print(newsGroup)
-            //print(newsPost)
+            print("NEWS GROUP")
+            print(newsGroup)
+            print(newsPost)
         }
     }
     
