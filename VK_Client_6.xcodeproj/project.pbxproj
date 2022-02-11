@@ -10,6 +10,8 @@
 		C2036BCE2617ED41004B96F2 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2036BCD2617ED41004B96F2 /* Header.swift */; };
 		C2036BD32617ED7A004B96F2 /* Header.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2036BD22617ED7A004B96F2 /* Header.xib */; };
 		C20A318E27B6696800A5D2BB /* HashServise.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20A318D27B6696800A5D2BB /* HashServise.swift */; };
+		C20A319027B6868500A5D2BB /* HashImageTableControllerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20A318F27B6868400A5D2BB /* HashImageTableControllerTableViewController.swift */; };
+		C20A319327B6871A00A5D2BB /* HashBigImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20A319227B6871A00A5D2BB /* HashBigImageViewController.swift */; };
 		C21D4DDF27ABE3EB00B9342F /* OperationClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21D4DDE27ABE3EB00B9342F /* OperationClasses.swift */; };
 		C21D4DE227B3FF0900B9342F /* PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = C21D4DE127B3FF0900B9342F /* PromiseKit */; };
 		C21D502726124DEA00E23769 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21D502626124DEA00E23769 /* AppDelegate.swift */; };
@@ -80,6 +82,8 @@
 		C2036BCD2617ED41004B96F2 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		C2036BD22617ED7A004B96F2 /* Header.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Header.xib; sourceTree = "<group>"; };
 		C20A318D27B6696800A5D2BB /* HashServise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashServise.swift; sourceTree = "<group>"; };
+		C20A318F27B6868400A5D2BB /* HashImageTableControllerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashImageTableControllerTableViewController.swift; sourceTree = "<group>"; };
+		C20A319227B6871A00A5D2BB /* HashBigImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashBigImageViewController.swift; sourceTree = "<group>"; };
 		C21D4DDE27ABE3EB00B9342F /* OperationClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationClasses.swift; sourceTree = "<group>"; };
 		C21D502326124DEA00E23769 /* VK_Client_6.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VK_Client_6.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C21D502626124DEA00E23769 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -160,6 +164,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C20A319127B6868D00A5D2BB /* HashServise */ = {
+			isa = PBXGroup;
+			children = (
+				C20A318F27B6868400A5D2BB /* HashImageTableControllerTableViewController.swift */,
+				C20A319227B6871A00A5D2BB /* HashBigImageViewController.swift */,
+				C20A318D27B6696800A5D2BB /* HashServise.swift */,
+			);
+			path = HashServise;
+			sourceTree = "<group>";
+		};
 		C21D501A26124DEA00E23769 = {
 			isa = PBXGroup;
 			children = (
@@ -312,7 +326,7 @@
 				C26311C62795C3C90045DD4E /* MyPhotosTableViewCell.swift */,
 				C296D62D276E45AC001A6426 /* MyPhotosViewController.swift */,
 				C296D62F276E462B001A6426 /* MyPhotosViewCell.swift */,
-				C20A318D27B6696800A5D2BB /* HashServise.swift */,
+				C20A319127B6868D00A5D2BB /* HashServise */,
 			);
 			path = MyPhotos;
 			sourceTree = "<group>";
@@ -485,6 +499,7 @@
 				C296D6622771FC5D001A6426 /* GroupsSearch.swift in Sources */,
 				C21D50AA26126C4200E23769 /* FriendsPhotoCell.swift in Sources */,
 				C21D505E2612536D00E23769 /* LoginFormController.swift in Sources */,
+				C20A319027B6868500A5D2BB /* HashImageTableControllerTableViewController.swift in Sources */,
 				C21D507126126AFC00E23769 /* FriendStructure.swift in Sources */,
 				C21D4DDF27ABE3EB00B9342F /* OperationClasses.swift in Sources */,
 				C296D65E2771F3F9001A6426 /* Photos_Realm.swift in Sources */,
@@ -495,6 +510,7 @@
 				C21D509426126BB700E23769 /* AllGroupsTableViewController.swift in Sources */,
 				C2D0051127A26B10005CF835 /* TextCell.swift in Sources */,
 				C26311C72795C3C90045DD4E /* MyPhotosTableViewCell.swift in Sources */,
+				C20A319327B6871A00A5D2BB /* HashBigImageViewController.swift in Sources */,
 				C296D629276E25F1001A6426 /* PhotosStructure.swift in Sources */,
 				C296D632276E4B8B001A6426 /* PhotosViewController.swift in Sources */,
 				C21D50A126126C1200E23769 /* FriendsPhotoController.swift in Sources */,
