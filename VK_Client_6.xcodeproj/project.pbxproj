@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C2036BCE2617ED41004B96F2 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2036BCD2617ED41004B96F2 /* Header.swift */; };
 		C2036BD32617ED7A004B96F2 /* Header.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2036BD22617ED7A004B96F2 /* Header.xib */; };
+		C20A318E27B6696800A5D2BB /* HashServise.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20A318D27B6696800A5D2BB /* HashServise.swift */; };
 		C21D4DDF27ABE3EB00B9342F /* OperationClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21D4DDE27ABE3EB00B9342F /* OperationClasses.swift */; };
 		C21D4DE227B3FF0900B9342F /* PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = C21D4DE127B3FF0900B9342F /* PromiseKit */; };
 		C21D502726124DEA00E23769 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21D502626124DEA00E23769 /* AppDelegate.swift */; };
@@ -78,6 +79,7 @@
 /* Begin PBXFileReference section */
 		C2036BCD2617ED41004B96F2 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		C2036BD22617ED7A004B96F2 /* Header.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Header.xib; sourceTree = "<group>"; };
+		C20A318D27B6696800A5D2BB /* HashServise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashServise.swift; sourceTree = "<group>"; };
 		C21D4DDE27ABE3EB00B9342F /* OperationClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationClasses.swift; sourceTree = "<group>"; };
 		C21D502326124DEA00E23769 /* VK_Client_6.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VK_Client_6.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C21D502626124DEA00E23769 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -310,6 +312,7 @@
 				C26311C62795C3C90045DD4E /* MyPhotosTableViewCell.swift */,
 				C296D62D276E45AC001A6426 /* MyPhotosViewController.swift */,
 				C296D62F276E462B001A6426 /* MyPhotosViewCell.swift */,
+				C20A318D27B6696800A5D2BB /* HashServise.swift */,
 			);
 			path = MyPhotos;
 			sourceTree = "<group>";
@@ -498,6 +501,7 @@
 				C296D630276E462B001A6426 /* MyPhotosViewCell.swift in Sources */,
 				C2D0051527A26B5F005CF835 /* LikesAndCommentsCell.swift in Sources */,
 				C2EABB242774945000497B43 /* FriendsExtensionForTable.swift in Sources */,
+				C20A318E27B6696800A5D2BB /* HashServise.swift in Sources */,
 				C21D507B26126B2800E23769 /* NewsStructure.swift in Sources */,
 				C2D0050F27A26AAA005CF835 /* AvatarNameDateCell.swift in Sources */,
 				C2036BCE2617ED41004B96F2 /* Header.swift in Sources */,
