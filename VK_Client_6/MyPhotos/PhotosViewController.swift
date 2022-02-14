@@ -7,11 +7,14 @@
 
 import UIKit
 import RealmSwift
+import PromiseKit
 
 class PhotosViewController: UITableViewController {
     
     var urlComponents = URLComponents()
     let session = URLSession.shared
+    
+    let photoService = PhotoService()
     
     var photosObserver: Results<PhotosR>?
     var token: NotificationToken?
@@ -28,28 +31,41 @@ class PhotosViewController: UITableViewController {
             self?.tableView.reloadData()
         })
         
-        urlComponents.scheme = "https"
-        urlComponents.host = "api.vk.com"
-        urlComponents.path = "/method/photos.getAll"
-        urlComponents.queryItems = [
-            URLQueryItem(name: "user_ids", value: Session.shared.userID),
-            URLQueryItem(name: "access_token", value: Session.shared.token),
-            URLQueryItem(name: "v", value: "5.131")
-        ]
+        firstly {
+            photoService.getPhotosPromise()
+        } .done { photo in
+            photos = photo
+            print(photos)
+        } .catch { error in
+            print(error.localizedDescription)
+        }
         
-        let url = urlComponents.url!
-        if let data = try? Data(contentsOf: url) {
-            self.parse(json: data)
-            //addPhotosToRealmDataBase()
-            return
-        } 
+        transferPhotos()
+        addPhotosToRealmDataBase()
+//
+//        urlComponents.scheme = "https"
+//        urlComponents.host = "api.vk.com"
+//        urlComponents.path = "/method/photos.getAll"
+//        urlComponents.queryItems = [
+//            URLQueryItem(name: "user_ids", value: Session.shared.userID),
+//            URLQueryItem(name: "access_token", value: Session.shared.token),
+//            URLQueryItem(name: "v", value: "5.131")
+//        ]
+        
+//        let url = urlComponents.url!
+//        if let data = try? Data(contentsOf: url) {
+//            self.parse(json: data)
+//            print("PHOTOS \(photos)")
+//            addPhotosToRealmDataBase()
+//            //return
+//        }
     }
     
     func parse(json: Data) {
         let decoder = JSONDecoder()
         if let jsonContainer = try? decoder.decode(PhotosConteiner.self, from: json) {
             photos = jsonContainer.response.items
-           //transferPhotos()
+           transferPhotos()
         }
     }
 
