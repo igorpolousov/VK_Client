@@ -52,6 +52,8 @@
 		C296D65E2771F3F9001A6426 /* Photos_Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = C296D65D2771F3F9001A6426 /* Photos_Realm.swift */; };
 		C296D6602771F44C001A6426 /* Groups_Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = C296D65F2771F44C001A6426 /* Groups_Realm.swift */; };
 		C296D6622771FC5D001A6426 /* GroupsSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C296D6612771FC5D001A6426 /* GroupsSearch.swift */; };
+		C2A2E86927BA7EE1001694F3 /* HashCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A2E86727BA7EE1001694F3 /* HashCell.swift */; };
+		C2A2E86A27BA7EE1001694F3 /* HashCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2A2E86827BA7EE1001694F3 /* HashCell.xib */; };
 		C2A3AA2F27904A7D00D13693 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C2A3AA2E27904A7D00D13693 /* GoogleService-Info.plist */; };
 		C2A3AA3227904C6800D13693 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = C2A3AA3127904C6800D13693 /* FirebaseAuth */; };
 		C2A3AA3427904C6800D13693 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = C2A3AA3327904C6800D13693 /* FirebaseDatabase */; };
@@ -128,6 +130,8 @@
 		C296D65D2771F3F9001A6426 /* Photos_Realm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos_Realm.swift; sourceTree = "<group>"; };
 		C296D65F2771F44C001A6426 /* Groups_Realm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Groups_Realm.swift; sourceTree = "<group>"; };
 		C296D6612771FC5D001A6426 /* GroupsSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsSearch.swift; sourceTree = "<group>"; };
+		C2A2E86727BA7EE1001694F3 /* HashCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashCell.swift; sourceTree = "<group>"; };
+		C2A2E86827BA7EE1001694F3 /* HashCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HashCell.xib; sourceTree = "<group>"; };
 		C2A3AA2E27904A7D00D13693 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C2D0050E27A26AAA005CF835 /* AvatarNameDateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarNameDateCell.swift; sourceTree = "<group>"; };
 		C2D0051027A26B10005CF835 /* TextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCell.swift; sourceTree = "<group>"; };
@@ -170,6 +174,8 @@
 			isa = PBXGroup;
 			children = (
 				C20A318F27B6868400A5D2BB /* HashImageTableControllerTableViewController.swift */,
+				C2A2E86727BA7EE1001694F3 /* HashCell.swift */,
+				C2A2E86827BA7EE1001694F3 /* HashCell.xib */,
 				C20A319227B6871A00A5D2BB /* HashBigImageViewController.swift */,
 				C20A318D27B6696800A5D2BB /* HashServise.swift */,
 			);
@@ -473,6 +479,7 @@
 				C21D503326124DEB00E23769 /* LaunchScreen.storyboard in Resources */,
 				C2036BD32617ED7A004B96F2 /* Header.xib in Resources */,
 				C21D503026124DEB00E23769 /* Assets.xcassets in Resources */,
+				C2A2E86A27BA7EE1001694F3 /* HashCell.xib in Resources */,
 				C21D50AB26126C4200E23769 /* FriendsPhotoCell.xib in Resources */,
 				C21D502E26124DEA00E23769 /* Main.storyboard in Resources */,
 				C2A3AA2F27904A7D00D13693 /* GoogleService-Info.plist in Resources */,
@@ -525,6 +532,7 @@
 				C21D507B26126B2800E23769 /* NewsStructure.swift in Sources */,
 				C2D0050F27A26AAA005CF835 /* AvatarNameDateCell.swift in Sources */,
 				C2036BCE2617ED41004B96F2 /* Header.swift in Sources */,
+				C2A2E86927BA7EE1001694F3 /* HashCell.swift in Sources */,
 				C2965C522768B8340050ED7E /* WebAccessViewController.swift in Sources */,
 				C28C48312624DD5B00ED4135 /* Session.swift in Sources */,
 				C21D502726124DEA00E23769 /* AppDelegate.swift in Sources */,

@@ -18,10 +18,10 @@ class HashImageTableControllerTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        photoService = PhotoService(container: self.tableView)
-        print("PHOTOSERVICE")
-        print(photoService)
+       tableView.register(UINib(nibName: "HashCell", bundle: nil), forCellReuseIdentifier: "MyHashCell")
         
+        photoService = PhotoService(container: self.tableView)
+       
         urlComponents.scheme = "https"
         urlComponents.host = "api.vk.com"
         urlComponents.path = "/method/photos.getAll"
@@ -51,10 +51,6 @@ class HashImageTableControllerTableViewController: UITableViewController {
                     }
                 }
             }
-            print("SELECTED image URL")
-            print(selectedImageUrls)
-//            print("HASH PHOTOS")
-//            print(photos)
         }
     }
 
@@ -71,31 +67,25 @@ class HashImageTableControllerTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "hashCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MyHashCell", for: indexPath) as! HashCell
         let photo = photos[indexPath.row]
         let url = selectedImageUrls[indexPath.row]
-        print("URL INITIAL")
-        print(url)
-        
+    
         dateFormatter?.dateFormat = "dd.MM.yyyy HH.mm"
         let date = Date(timeIntervalSince1970: TimeInterval(photo.date))
-        //let stringDate = dateFormatter?.string(from: date)
         
-        let image = photoService!.photo(byUrl: url)
-        print("IMAGE")
-        print(image)
+//        cell.textLabel?.text = "\(date)"
+//        cell.imageView?.image = photoService!.photo(byUrl: url)
         
-        cell.textLabel?.text = "\(date)"
-        cell.imageView?.image = photoService!.photo(byUrl: url)
-        
+        cell.hashCellDateLabel.text = "\(date)"
+        cell.hashCellImage.image = photoService!.photo(byUrl: url)
 
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "HashImage") as? HashBigImageViewController {
-            let photo = photos[indexPath.row]
-            let url = photo.sizes[indexPath.row].url
+            let url = selectedImageUrls[indexPath.row]
             let image = photoService!.photo(byUrl: url)
             vc.imageGet = image
             navigationController?.pushViewController(vc, animated: true)

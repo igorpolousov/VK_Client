@@ -63,17 +63,13 @@ class PhotoService {
         
             // Проверяем что имя фала существует
         guard let fileName = getFilePath(url: url) else { return nil}
-        print("FILE NAME get image form cache")
-        print(fileName)
+
             // Получаем данные по свойству файла
         guard let info = try? FileManager.default.attributesOfItem(atPath: fileName) else {return nil}
-        print("INFO get image form cache")
-        print(info)
+
             // Получаем дату создания файла
         guard let modificationDate = info[FileAttributeKey.modificationDate] as? Date else { return nil}
-        print("MODIFICATION DATE get image form cache")
-        print(modificationDate)
-     
+
         // Получаем время прошедшее после создания файла
          let lifeTime = Date().timeIntervalSince(modificationDate)
          
@@ -82,12 +78,9 @@ class PhotoService {
              lifeTime <= cacheLifeTime,
              // Если файл хранился меньше заданного времени, то берем файл из папки
              let image = UIImage(contentsOfFile: fileName) else { return nil }
-        print("GETimageFromCache")
-        print(image)
-         
+
             images[url] = image
-        print("IMAGES Dictionary add IMAGE")
-        print(image)
+
         // Возвращаем картинку из папки
          return image
      }
@@ -106,9 +99,7 @@ class PhotoService {
             if let dataUrl = URL(string: url) {
                 if let data = try? Data(contentsOf: dataUrl) {
                     let image = UIImage(data: data)
-                    print("IMAGE to SAVE")
-                    print(dataUrl)
-                    print(image as Any)
+
                     // Добавили картинку в словарь
                     images[url] = image
                     // Сохранили картинку в папку на носителе телефона
@@ -118,24 +109,19 @@ class PhotoService {
         }
     }
     
-
+ 
 //Метод photo предоставляет изображение по URL. При этом мы ищем изображение сначала в кеше оперативной памяти, потом в файловой системе; если его нигде нет, загружаем из сети. IndexPath требуется, чтобы установить загруженное изображение в нужной строке, а не в ячейке, которая в момент, когда загрузка завершится, может быть использована для совершенно другой строки.
      func photo( byUrl url: String) -> UIImage? {
          loadPhoto()
          
          var image: UIImage?
-         print("IMAGES Dictionary")
-         print(images)
-         print(url)
          
          if let photo = images[url] {
              image = photo
-             print("IMAGE TO TABLE FROM DICTIONARY")
-             print(photo)
+
          } else if let photo = getImageFromCache(url: url) {
              image = photo
-             print("IMAGE TO TABLE FROM CACHE")
-             print(image)
+
          }
          return image
      }
