@@ -12,6 +12,7 @@
 		C20A318E27B6696800A5D2BB /* HashServise.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20A318D27B6696800A5D2BB /* HashServise.swift */; };
 		C20A319027B6868500A5D2BB /* HashImageTableControllerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20A318F27B6868400A5D2BB /* HashImageTableControllerTableViewController.swift */; };
 		C20A319327B6871A00A5D2BB /* HashBigImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20A319227B6871A00A5D2BB /* HashBigImageViewController.swift */; };
+		C20A319627B689C500A5D2BB /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C20A319527B689C500A5D2BB /* Alamofire */; };
 		C21D4DDF27ABE3EB00B9342F /* OperationClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21D4DDE27ABE3EB00B9342F /* OperationClasses.swift */; };
 		C21D4DE227B3FF0900B9342F /* PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = C21D4DE127B3FF0900B9342F /* PromiseKit */; };
 		C21D502726124DEA00E23769 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21D502626124DEA00E23769 /* AppDelegate.swift */; };
@@ -140,6 +141,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C20A319627B689C500A5D2BB /* Alamofire in Frameworks */,
 				C2A3AA3427904C6800D13693 /* FirebaseDatabase in Frameworks */,
 				C21D4DE227B3FF0900B9342F /* PromiseKit in Frameworks */,
 				C296D6552771CD7B001A6426 /* RealmSwift in Frameworks */,
@@ -373,6 +375,7 @@
 				C2A3AA3127904C6800D13693 /* FirebaseAuth */,
 				C2A3AA3327904C6800D13693 /* FirebaseDatabase */,
 				C21D4DE127B3FF0900B9342F /* PromiseKit */,
+				C20A319527B689C500A5D2BB /* Alamofire */,
 			);
 			productName = VK_Client_6;
 			productReference = C21D502326124DEA00E23769 /* VK_Client_6.app */;
@@ -449,6 +452,7 @@
 				C296D6532771CD7B001A6426 /* XCRemoteSwiftPackageReference "realm-swift" */,
 				C2A3AA3027904C6800D13693 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				C21D4DE027B3FF0900B9342F /* XCRemoteSwiftPackageReference "PromiseKit" */,
+				C20A319427B689C400A5D2BB /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = C21D502426124DEA00E23769 /* Products */;
 			projectDirPath = "";
@@ -870,6 +874,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		C20A319427B689C400A5D2BB /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		C21D4DE027B3FF0900B9342F /* XCRemoteSwiftPackageReference "PromiseKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/mxcl/PromiseKit.git";
@@ -897,6 +909,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		C20A319527B689C500A5D2BB /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C20A319427B689C400A5D2BB /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
 		C21D4DE127B3FF0900B9342F /* PromiseKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C21D4DE027B3FF0900B9342F /* XCRemoteSwiftPackageReference "PromiseKit" */;

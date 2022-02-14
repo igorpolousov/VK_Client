@@ -10,14 +10,13 @@ import Alamofire
 
 class PhotoService {
     
-   // задали константу, она будет определять время в секундах, в течение которого кеш считается актуальным. Обратите внимание на стиль, которым она задана. Это умножение чисел — дней, часов, минут и секунд.
+  
     // MARK: Задано время хранения файлов в папке
     private let cacheLifeTime: TimeInterval = 30 * 24 * 60 * 60
     
     // MARK: Путь к папке и имя папки куда будут сохраняться изображения
     private static let pathName: String = {
         
-//        cтатическое свойство, имя папки, в которой будут сохраняться изображения. Свойство инициируется с помощью замыкания. Помимо этого, в замыкании происходит проверка, существует ли папка. Если не существует, она будет создана.
         let pathName = "images"
         
         // Указали путь к папке CashDirectory
@@ -29,39 +28,52 @@ class PhotoService {
             try? FileManager.default.createDirectory(at: url, withIntermediateDirectories: true, attributes: nil)
         }
         // Вернули название папки
+        print("PATHNAME имя папки куда сохранять")
+        print(url)
         return pathName
     }()
     
-//     получает на вход URL изображения и возвращает на его основе путь к файлу для сохранения или загрузки. Имя для файла мы получаем на основе его URL, который чаще всего будет ссылкой на этот файл в сети Internet. Таким образом, имя файла будет совпадать с тем, что на сервере.
-    // MARK: Получаем путь к файлу
+    // MARK: Создаём путь к файлу и имя файла
     private func getFilePath(url: String) -> String? {
         // Сделали проверку что директория существует
         guard let cachesDirectory = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first else { return nil }
         // Задали получение имени файлов
         let hashName = url.split(separator: "/").last ?? "default"
+        print("HASHNAME имя файла который будет сохранен")
+        print(hashName)
         // Вернули путь к файлу
-        return cachesDirectory.appendingPathComponent(PhotoService.pathName + "/" + hashName).path
+        let path = cachesDirectory.appendingPathComponent(PhotoService.pathName + "/" + hashName).path
+        print("PATH полный путь для сохранения")
+        print(path)
+        return path
     }
     
-   // MARK: сохраняет изображение в файловой системе
-    private func saveImageToCache(url: String, image: UIImage) {
-        guard let fileName = getFilePath(url: url),
-        let data = image.pngData() else { return }
-        FileManager.default.createFile(atPath: fileName, contents: data, attributes: nil)
-    }
+    // MARK: сохраняет изображение в файловой системе
+      private func saveImageToCache(url: String, image: UIImage) {
+         guard let fileName = getFilePath(url: url),
+         let data = image.pngData() else { return }
+         print("DATA")
+         print(data)
+         FileManager.default.createFile(atPath: fileName, contents: data, attributes: nil)
+     }
     
 //    загружает изображение из файловой системы. При этом он проводит ряд проверок. Первым делом мы пытаемся получить атрибуты изображения FileManager.default.attributesOfItem. Этот метод вернёт всю техническую информацию о файле, если он существует. Нас интересует дата последнего изменения. Если со времени изменения файла прошло больше секунд, чем указано в нашем свойстве cacheLifeTime, файл считается устаревшем и мы не будем заново загружать его из сети.
     // MARK: Получение файла из папки по указанному пути
     private func getImageFromCache(url: String) -> UIImage? {
-        guard
+        
             // Проверяем что имя фала существует
-            let fileName = getFilePath(url: url),
+        guard let fileName = getFilePath(url: url) else { return nil}
+        print("FILE NAME get image form cache")
+        print(fileName)
             // Получаем данные по свойству файла
-            let info = try? FileManager.default.attributesOfItem(atPath: fileName),
+        guard let info = try? FileManager.default.attributesOfItem(atPath: fileName) else {return nil}
+        print("INFO get image form cache")
+        print(info)
             // Получаем дату создания файла
-             let modificationDate = info[FileAttributeKey.modificationDate] as? Date
-             else { return nil }
-         
+        guard let modificationDate = info[FileAttributeKey.modificationDate] as? Date else { return nil}
+        print("MODIFICATION DATE get image form cache")
+        print(modificationDate)
+     
         // Получаем время прошедшее после создания файла
          let lifeTime = Date().timeIntervalSince(modificationDate)
          
@@ -70,51 +82,60 @@ class PhotoService {
              lifeTime <= cacheLifeTime,
              // Если файл хранился меньше заданного времени, то берем файл из папки
              let image = UIImage(contentsOfFile: fileName) else { return nil }
-
-         DispatchQueue.main.async {
-            self.images[url] = image
-         }
+        print("GETimageFromCache")
+        print(image)
+         
+            images[url] = image
+        print("IMAGES Dictionary add IMAGE")
+        print(image)
         // Возвращаем картинку из папки
          return image
      }
+    
+    
 
 //словарь в котором будут храниться загруженные и извлеченные из файловой системы изображения. Это кеш в оперативной памяти с минимальным временем доступа, специально для таблиц и коллекций, где очень важна скорость получения изображений
     //MARK: словарь для хранения изображений
      private var images = [String: UIImage]()
      
 //    загружает фото из сети. Это обычный Alamofire-запрос на получение данных, он проходит в глобальной очереди, загружает изображение, сохраняет его на диске и в словаре images. Кроме того, после окончания загрузки он обновляет строку в таблице, чтобы отобразить загруженное изображение.
-    //MARK: загрузка изображений из сети  !Переписать без alamofire
-     private func loadPhoto(atIndexpath indexPath: IndexPath?, byUrl url: String) {
+    //MARK: загрузка изображений из сети
+    private func loadPhoto() {   //atIndexpath indexPath: IndexPath?
         
-         // Получение данных изображения в глобальном потоке
-         AF.request(url).responseData(queue: DispatchQueue.global()) { [weak self] response in
-             guard
-                 let data = response.data,
-                 let image = UIImage(data: data) else { return }
-             // Добавили картинку в словарь
-             DispatchQueue.main.async {
-                 self?.images[url] = image
-             }
-             // Сохранили картинку в папку
-             self?.saveImageToCache(url: url, image: image)
-             // Перезагрузка строки в таблице ??Нафиг это надо??
-             DispatchQueue.main.async {
-                self?.container.reloadRow(atIndexpath: indexPath!)
-             }
-             
-         }
-     }
+        for url in selectedImageUrls {
+            if let dataUrl = URL(string: url) {
+                if let data = try? Data(contentsOf: dataUrl) {
+                    let image = UIImage(data: data)
+                    print("IMAGE to SAVE")
+                    print(dataUrl)
+                    print(image as Any)
+                    // Добавили картинку в словарь
+                    images[url] = image
+                    // Сохранили картинку в папку на носителе телефона
+                    self.saveImageToCache(url: url, image: image!)
+                }
+            }
+        }
+    }
+    
 
 //Метод photo предоставляет изображение по URL. При этом мы ищем изображение сначала в кеше оперативной памяти, потом в файловой системе; если его нигде нет, загружаем из сети. IndexPath требуется, чтобы установить загруженное изображение в нужной строке, а не в ячейке, которая в момент, когда загрузка завершится, может быть использована для совершенно другой строки.
-     func photo(atIndexpath indexPath: IndexPath?, byUrl url: String) -> UIImage? {
-
+     func photo( byUrl url: String) -> UIImage? {
+         loadPhoto()
+         
          var image: UIImage?
+         print("IMAGES Dictionary")
+         print(images)
+         print(url)
+         
          if let photo = images[url] {
              image = photo
+             print("IMAGE TO TABLE FROM DICTIONARY")
+             print(photo)
          } else if let photo = getImageFromCache(url: url) {
              image = photo
-         } else {
-            loadPhoto(atIndexpath: nil, byUrl: url)
+             print("IMAGE TO TABLE FROM CACHE")
+             print(image)
          }
          return image
      }

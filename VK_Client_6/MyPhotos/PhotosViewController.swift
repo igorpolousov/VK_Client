@@ -43,7 +43,6 @@ class PhotosViewController: UITableViewController {
             self.parse(json: data)
             print("PHOTOS \(photos)")
             addPhotosToRealmDataBase()
-            //return
         } 
     }
     
