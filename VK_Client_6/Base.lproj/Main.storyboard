@@ -993,6 +993,7 @@
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="N0k-ah-0H1">
                                                     <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1005,6 +1006,7 @@
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nhi-02-mAs">
                                             <rect key="frame" x="139" y="19" width="229" height="79"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="229" id="Y6S-jn-MwI"/>
                                             </constraints>
@@ -1041,11 +1043,11 @@
             </objects>
             <point key="canvasLocation" x="2556.521739130435" y="1441.7410714285713"/>
         </scene>
-        <!--Item-->
+        <!--HashImage-->
         <scene sceneID="1Pi-3t-r2M">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tQf-pc-2Kc" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="J2j-Bm-ezG"/>
+                    <tabBarItem key="tabBarItem" title="HashImage" id="J2j-Bm-ezG"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="56S-PD-XsH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
