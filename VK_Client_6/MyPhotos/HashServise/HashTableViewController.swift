@@ -1,24 +1,21 @@
 //
-//  HashImageTableControllerTableViewController.swift
+//  HashTableViewController.swift
 //  VK_Client_6
 //
-//  Created by Igor Polousov on 11.02.2022.
+//  Created by Igor Polousov on 15.02.2022.
 //
 
 import UIKit
 
-class HashImageTableControllerTableViewController: UITableViewController {
+class HashTableViewController: UITableViewController {
     
     var urlComponents = URLComponents()
     
     var photoService: PhotoService?
     var dateFormatter: DateFormatter?
-   
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-       //tableView.register(UINib(nibName: "HashCell", bundle: nil), forCellReuseIdentifier: "MyHashCell")
         
         photoService = PhotoService(container: self.tableView)
        
@@ -54,8 +51,10 @@ class HashImageTableControllerTableViewController: UITableViewController {
         }
     }
 
+
     // MARK: - Table view data source
 
+   
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return selectedImageUrls.count
@@ -69,9 +68,6 @@ class HashImageTableControllerTableViewController: UITableViewController {
     
         dateFormatter?.dateFormat = "dd.MM.yyyy HH.mm"
         let date = Date(timeIntervalSince1970: TimeInterval(photo.date))
-        
-//        cell.textLabel?.text = "\(date)"
-//        cell.imageView?.image = photoService!.photo(byUrl: url)
         
         cell.hashLabel.text = "\(date)"
         cell.hashImage.image = photoService!.photo(byUrl: url)
@@ -88,5 +84,5 @@ class HashImageTableControllerTableViewController: UITableViewController {
             
         }
     }
-
+    
 }

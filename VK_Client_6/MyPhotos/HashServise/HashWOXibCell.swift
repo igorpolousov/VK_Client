@@ -9,9 +9,14 @@ import UIKit
 
 class HashWOXibCell: UITableViewCell {
 
+   
+    @IBOutlet var hashView: ShadowView!
+    @IBOutlet var hashLabel: UILabel!
+    @IBOutlet var hashImage: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+       
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
