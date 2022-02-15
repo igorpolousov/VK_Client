@@ -39,6 +39,7 @@
 		C21D50BC2612813D00E23769 /* MyGroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21D50BB2612813D00E23769 /* MyGroupsViewController.swift */; };
 		C21D50C12612815F00E23769 /* MyGroupsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21D50C02612815F00E23769 /* MyGroupsViewCell.swift */; };
 		C234B95327A93E6200EEC0A8 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = C234B95227A93E6200EEC0A8 /* Request.swift */; };
+		C24A15B127BBDD00001419C1 /* HashWOXibCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24A15B027BBDD00001419C1 /* HashWOXibCell.swift */; };
 		C26311C42795BAF60045DD4E /* FireBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26311C32795BAF60045DD4E /* FireBase.swift */; };
 		C26311C72795C3C90045DD4E /* MyPhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26311C62795C3C90045DD4E /* MyPhotosTableViewCell.swift */; };
 		C28C48312624DD5B00ED4135 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28C48302624DD5B00ED4135 /* Session.swift */; };
@@ -118,6 +119,7 @@
 		C21D50BB2612813D00E23769 /* MyGroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupsViewController.swift; sourceTree = "<group>"; };
 		C21D50C02612815F00E23769 /* MyGroupsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupsViewCell.swift; sourceTree = "<group>"; };
 		C234B95227A93E6200EEC0A8 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		C24A15B027BBDD00001419C1 /* HashWOXibCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashWOXibCell.swift; sourceTree = "<group>"; };
 		C26311C32795BAF60045DD4E /* FireBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBase.swift; sourceTree = "<group>"; };
 		C26311C62795C3C90045DD4E /* MyPhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPhotosTableViewCell.swift; sourceTree = "<group>"; };
 		C28C48302624DD5B00ED4135 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				C20A318F27B6868400A5D2BB /* HashImageTableControllerTableViewController.swift */,
+				C24A15B027BBDD00001419C1 /* HashWOXibCell.swift */,
 				C2A2E86727BA7EE1001694F3 /* HashCell.swift */,
 				C2A2E86827BA7EE1001694F3 /* HashCell.xib */,
 				C20A319227B6871A00A5D2BB /* HashBigImageViewController.swift */,
@@ -540,6 +543,7 @@
 				C234B95327A93E6200EEC0A8 /* Request.swift in Sources */,
 				C21D502926124DEA00E23769 /* SceneDelegate.swift in Sources */,
 				C21D50BC2612813D00E23769 /* MyGroupsViewController.swift in Sources */,
+				C24A15B127BBDD00001419C1 /* HashWOXibCell.swift in Sources */,
 				C26311C42795BAF60045DD4E /* FireBase.swift in Sources */,
 				C21D50C12612815F00E23769 /* MyGroupsViewCell.swift in Sources */,
 				C21D508026126B5700E23769 /* NewsTableViewController.swift in Sources */,

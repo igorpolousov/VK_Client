@@ -933,12 +933,47 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="hashCell" rowHeight="60" id="ec2-Ls-t3a">
-                                <rect key="frame" x="0.0" y="44.5" width="414" height="60"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="hashCell" rowHeight="120" id="ec2-Ls-t3a">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ec2-Ls-t3a" id="rfF-N5-BpG">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gCf-9v-CXh">
+                                            <rect key="frame" x="30" y="9" width="100" height="100"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nAl-aJ-BME">
+                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <constraints>
+                                                <constraint firstItem="nAl-aJ-BME" firstAttribute="centerY" secondItem="gCf-9v-CXh" secondAttribute="centerY" id="Oo1-uz-FU8"/>
+                                                <constraint firstItem="nAl-aJ-BME" firstAttribute="leading" secondItem="gCf-9v-CXh" secondAttribute="leading" id="Uf2-jy-BtV"/>
+                                                <constraint firstItem="nAl-aJ-BME" firstAttribute="top" secondItem="gCf-9v-CXh" secondAttribute="top" id="aSc-fT-ErW"/>
+                                                <constraint firstItem="nAl-aJ-BME" firstAttribute="centerX" secondItem="gCf-9v-CXh" secondAttribute="centerX" id="eIF-Se-uut"/>
+                                            </constraints>
+                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Etx-cO-DVh">
+                                            <rect key="frame" x="157" y="11" width="220" height="100"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="220" id="7v0-ya-8Gh"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="40"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Etx-cO-DVh" secondAttribute="bottom" constant="-2" id="49d-DN-9BY"/>
+                                        <constraint firstItem="Etx-cO-DVh" firstAttribute="top" secondItem="rfF-N5-BpG" secondAttribute="topMargin" id="CCQ-l0-ekJ"/>
+                                        <constraint firstItem="Etx-cO-DVh" firstAttribute="leading" secondItem="gCf-9v-CXh" secondAttribute="trailing" constant="27" id="DCt-ep-90q"/>
+                                        <constraint firstItem="gCf-9v-CXh" firstAttribute="bottom" secondItem="rfF-N5-BpG" secondAttribute="bottomMargin" id="E3F-1P-WHo"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Etx-cO-DVh" secondAttribute="trailing" constant="17" id="JeB-I1-M3n"/>
+                                        <constraint firstItem="gCf-9v-CXh" firstAttribute="leading" secondItem="rfF-N5-BpG" secondAttribute="leadingMargin" constant="10" id="dE5-Yx-4EH"/>
+                                        <constraint firstItem="gCf-9v-CXh" firstAttribute="top" secondItem="rfF-N5-BpG" secondAttribute="topMargin" constant="-2" id="eC3-vA-edc"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -951,7 +986,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eff-Pn-iZX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2557" y="1450"/>
+            <point key="canvasLocation" x="2556.521739130435" y="1449.7767857142856"/>
         </scene>
         <!--Hash Big Image View Controller-->
         <scene sceneID="dQC-IP-coT">
