@@ -7,6 +7,7 @@
 
 import UIKit
 import RealmSwift
+import PromiseKit
 
 class PhotosViewController: UITableViewController {
     
@@ -40,8 +41,8 @@ class PhotosViewController: UITableViewController {
         let url = urlComponents.url!
         if let data = try? Data(contentsOf: url) {
             self.parse(json: data)
-            //addPhotosToRealmDataBase()
-            return
+            print("PHOTOS \(photos)")
+            addPhotosToRealmDataBase()
         } 
     }
     
@@ -49,7 +50,7 @@ class PhotosViewController: UITableViewController {
         let decoder = JSONDecoder()
         if let jsonContainer = try? decoder.decode(PhotosConteiner.self, from: json) {
             photos = jsonContainer.response.items
-           //transferPhotos()
+           transferPhotos()
         }
     }
 
