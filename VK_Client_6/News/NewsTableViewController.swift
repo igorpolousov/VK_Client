@@ -8,7 +8,12 @@
 import UIKit
 import Firebase
 
-class NewsTableViewController: UITableViewController {
+class NewsTableViewController: UITableViewController, UITableViewDataSourcePrefetching {
+   
+    
+    var nextFrom = ""
+    var isLoading = false
+    
     let authFireBase = Auth.auth()
     
     var urlComponents = URLComponents()
@@ -27,18 +32,23 @@ class NewsTableViewController: UITableViewController {
         super.viewDidLoad()
         
         refreshControl()
+        tableView.prefetchDataSource = self
         
         DispatchQueue.global().async(group: dispatchGroup) {
+            let startFrom = ""
+            let startTime: Double? = nil
+            
             self.urlComponents.scheme = "https"
             self.urlComponents.host = "api.vk.com"
             self.urlComponents.path = "/method/newsfeed.get"
             self.urlComponents.queryItems = [
                 URLQueryItem(name: "user_ids", value: Session.shared.userID),
                 //URLQueryItem(name: "order", value: "name"),
-                URLQueryItem(name: "filter", value: "post, photo"),
+                URLQueryItem(name: "filters", value: "post, photo"),
                 URLQueryItem(name: "access_token", value: Session.shared.token),
                 URLQueryItem(name: "count", value: "10"),
-                URLQueryItem(name: "v", value: "5.131")
+                URLQueryItem(name: "v", value: "5.131"),
+                URLQueryItem(name: "start_from", value: startFrom)
             ]
             
             let url = self.urlComponents.url!
@@ -65,6 +75,15 @@ class NewsTableViewController: UITableViewController {
     }
     
     // MARK: - Table view data source
+    
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        guard let maxSection = indexPaths.map({$0.section}).max() else { return }
+        if maxSection  > newsPost.count - 3, !isLoading {
+            isLoading = true
+            newsRequest(startTime: Int(Date().timeIntervalSince1970), nextFrom: nextFrom)
+            isLoading = false
+        }
+    }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return newsPost.count
@@ -151,26 +170,27 @@ class NewsTableViewController: UITableViewController {
         refreshControl?.tintColor = .brown
         refreshControl?.addTarget(self, action: #selector(refreshNews), for: .valueChanged)
     }
-    // MARK: News refreshing
+    // MARK: News refreshing pull to refresh
     @objc func refreshNews() {
         self.refreshControl?.beginRefreshing()
         let mostFreshNewsDate = newsPost.first?.date ?? Int(Date().timeIntervalSince1970)
-        newsRequest(startTime: mostFreshNewsDate)
+        newsRequest(startTime: mostFreshNewsDate,nextFrom: "")
         refreshControl?.endRefreshing()
         
     }
     
-    func newsRequest(startTime: Int) {
+    func newsRequest(startTime: Int, nextFrom: String) {
         let checkTime = Int(Date().timeIntervalSince1970)
         if checkTime == startTime + 1 {
             // Отправляем сетевой запрос загрузки новостей
             URLSession.shared.dataTask(with: url!) { data, response, error in
                 guard let data = data else { return }
                 guard  error == nil else { return }
-                
+               
                 do {
                     let jsonContainer = try JSONDecoder().decode(NewsContainer.self, from: data)
                     newsPost = jsonContainer.response.items
+                    self.tableView.reloadData()
                 } catch let error {
                     print(error)
                 }
