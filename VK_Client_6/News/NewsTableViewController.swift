@@ -14,6 +14,8 @@ class NewsTableViewController: UITableViewController {
     var urlComponents = URLComponents()
     let session = URLSession.shared
     
+    let url: URL? = nil
+    
     let dispatchGroup = DispatchGroup()
 
     @IBAction func singOut(_ sender: UIBarButtonItem) {
@@ -24,6 +26,8 @@ class NewsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        refreshControl()
+        
         DispatchQueue.global().async(group: dispatchGroup) {
             self.urlComponents.scheme = "https"
             self.urlComponents.host = "api.vk.com"
@@ -33,6 +37,7 @@ class NewsTableViewController: UITableViewController {
                 //URLQueryItem(name: "order", value: "name"),
                 URLQueryItem(name: "filter", value: "post, photo"),
                 URLQueryItem(name: "access_token", value: Session.shared.token),
+                URLQueryItem(name: "count", value: "10"),
                 URLQueryItem(name: "v", value: "5.131")
             ]
             
@@ -62,12 +67,10 @@ class NewsTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return newsPost.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return 4
     }
 
@@ -139,6 +142,40 @@ class NewsTableViewController: UITableViewController {
             if let window = self.view.window {
                 window.rootViewController = vc
             }
+        }
+    }
+    
+    func refreshControl() {
+        refreshControl = UIRefreshControl()
+        refreshControl?.attributedTitle = NSAttributedString(string: "Refreshing...")
+        refreshControl?.tintColor = .brown
+        refreshControl?.addTarget(self, action: #selector(refreshNews), for: .valueChanged)
+    }
+    // MARK: News refreshing
+    @objc func refreshNews() {
+        self.refreshControl?.beginRefreshing()
+        let mostFreshNewsDate = newsPost.first?.date ?? Int(Date().timeIntervalSince1970)
+        newsRequest(startTime: mostFreshNewsDate)
+        refreshControl?.endRefreshing()
+        
+    }
+    
+    func newsRequest(startTime: Int) {
+        let checkTime = Int(Date().timeIntervalSince1970)
+        if checkTime == startTime + 1 {
+            // Отправляем сетевой запрос загрузки новостей
+            URLSession.shared.dataTask(with: url!) { data, response, error in
+                guard let data = data else { return }
+                guard  error == nil else { return }
+                
+                do {
+                    let jsonContainer = try JSONDecoder().decode(NewsContainer.self, from: data)
+                    newsPost = jsonContainer.response.items
+                } catch let error {
+                    print(error)
+                }
+                
+            }.resume()
         }
     }
 }
