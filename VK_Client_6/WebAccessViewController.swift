@@ -30,7 +30,7 @@ class WebAccessViewController: UIViewController, WKNavigationDelegate {
             URLQueryItem(name: "client_id", value: "7833687"),
             URLQueryItem(name: "display", value: "mobile"),
             URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html"),
-            URLQueryItem(name: "scope", value: "262150"),
+            URLQueryItem(name: "scope", value: "friends, wall, photos"),
             URLQueryItem(name: "response_type", value: "token"),
             URLQueryItem(name: "revoke", value: "1"),
             URLQueryItem(name: "v", value: "5.131")
@@ -62,6 +62,7 @@ class WebAccessViewController: UIViewController, WKNavigationDelegate {
         
         guard let token = params["access_token"], let userId = params["user_id"] else { return }
         Session.shared.token = token
+        print(token)
         Session.shared.userID = userId
         performSegue(withIdentifier: "segue", sender: nil)
         decisionHandler(.cancel)

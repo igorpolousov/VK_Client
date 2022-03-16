@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleAspectFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyHashCell" rowHeight="40" id="KGk-i7-Jjw" customClass="HashCell" customModule="VK_Client_6" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="400" height="45"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="400" height="45"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Txb-IH-EWj">
+                        <rect key="frame" x="5" y="5" width="35" height="35"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="35" id="2d3-n1-xti"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Date" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ekw-ut-HWi">
+                        <rect key="frame" x="70" y="5" width="310" height="35"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Txb-IH-EWj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-50" id="6YW-T9-gkS"/>
+                    <constraint firstItem="Txb-IH-EWj" firstAttribute="top" secondItem="ekw-ut-HWi" secondAttribute="top" id="9JQ-L3-tvb"/>
+                    <constraint firstItem="Txb-IH-EWj" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="HWL-97-zRA"/>
+                    <constraint firstItem="ekw-ut-HWi" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="QuG-86-Omy"/>
+                    <constraint firstItem="Txb-IH-EWj" firstAttribute="bottom" secondItem="ekw-ut-HWi" secondAttribute="bottom" id="TEP-l3-FNw"/>
+                    <constraint firstItem="ekw-ut-HWi" firstAttribute="leading" secondItem="Txb-IH-EWj" secondAttribute="trailing" constant="30" id="VLP-MQ-k60"/>
+                    <constraint firstItem="Txb-IH-EWj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-15" id="pc3-k9-5u9"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="hashCellDateLabel" destination="ekw-ut-HWi" id="iyX-Db-2mP"/>
+                <outlet property="hashCellImage" destination="Txb-IH-EWj" id="Lmr-62-G1k"/>
+            </connections>
+            <point key="canvasLocation" x="156.52173913043478" y="85.379464285714278"/>
+        </tableViewCell>
+    </objects>
+</document>

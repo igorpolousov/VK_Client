@@ -17,6 +17,7 @@ class FriendsTableViewCell: UITableViewCell {
         super.awakeFromNib()
         friendPhoto.applyDesign()
         shadowView.applyDesignShadow()
+        friendName.applyFont()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

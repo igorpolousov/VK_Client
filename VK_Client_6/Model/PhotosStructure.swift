@@ -9,6 +9,7 @@ import Foundation
 
 // Массив данных полученных JSON
 var photos = [Photo]()
+var selectedImageUrls = [String]()
 
 // MARK: - Welcome
 struct PhotosConteiner: Codable {

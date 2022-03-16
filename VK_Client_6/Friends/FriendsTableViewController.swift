@@ -10,7 +10,8 @@ import RealmSwift
 
 class FriendsTableViewController: UITableViewController, UISearchResultsUpdating {
     
-
+    let queue = OperationQueue()
+    
     var urlComponents = URLComponents()
     let session = URLSession.shared
     
@@ -58,13 +59,27 @@ class FriendsTableViewController: UITableViewController, UISearchResultsUpdating
         ]
         
         let url = urlComponents.url!
-        if let data = try? Data(contentsOf: url) {
-            self.parse(json: data)
-            print("FRIENDS NAME")
-            print(friendsName)
-            addToRealmDataBase()
-            //return
-        }
+        
+        let getDataOperation = GetDataOperation(url: url)
+        queue.addOperation(getDataOperation)
+        
+        let parseData = ParseOperation()
+        parseData.addDependency(getDataOperation)
+        queue.addOperation(parseData)
+        
+        let addToRealmDataBase = AddToRealmOperation()
+        addToRealmDataBase.addDependency(parseData)
+        queue.addOperation(addToRealmDataBase)
+        
+        
+        
+        
+//        if let data = try? Data(contentsOf: url) {
+//            self.parse(json: data)
+//            print("FRIENDS NAME")
+//            print(friendsName)
+//            addToRealmDataBase()
+//        }
         
         friendsObserver = getDataFromRealm()
         
