@@ -6,6 +6,7 @@
 //
 
 import Foundation
+//let session = URLSession.shared
 //let request = URLRequest(url: url)
 //let task = session.dataTask(with: request) { data, urlResponse, error in
 //    let json = try? JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.fragmentsAllowed)

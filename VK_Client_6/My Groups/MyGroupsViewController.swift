@@ -40,6 +40,8 @@ class MyGroupsViewController: UITableViewController {
         ]
         
         let url = urlComponents.url!
+        print("URL_URL_URL")
+        print(url)
         if let data =  try? Data(contentsOf: url) {
             self.parse(json: data)
             //addGroupsToRealmDataBase()

@@ -59,6 +59,8 @@ class FriendsTableViewController: UITableViewController, UISearchResultsUpdating
         ]
         
         let url = urlComponents.url!
+        print("URL_URL_URL")
+        print(url)
         
         let getDataOperation = GetDataOperation(url: url)
         queue.addOperation(getDataOperation)
