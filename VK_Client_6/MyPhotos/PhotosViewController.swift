@@ -7,17 +7,22 @@
 
 import UIKit
 import RealmSwift
+import PromiseKit
 
 class PhotosViewController: UITableViewController {
     
-    var urlComponents = URLComponents()
-    let session = URLSession.shared
+//    var urlComponents = URLComponents()
+//    let session = URLSession.shared
+    let adapter = Adapter()
+    
     
     var photosObserver: Results<PhotosR>?
     var token: NotificationToken?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        photos = adapter.photoadapter(method: "photos.getAll")
         
         photosObserver = getPhotosDataFromRealm()
         //print("PHOTOS OBSERVER \(photosObserver)")
@@ -28,29 +33,29 @@ class PhotosViewController: UITableViewController {
             self?.tableView.reloadData()
         })
         
-        urlComponents.scheme = "https"
-        urlComponents.host = "api.vk.com"
-        urlComponents.path = "/method/photos.getAll"
-        urlComponents.queryItems = [
-            URLQueryItem(name: "user_ids", value: Session.shared.userID),
-            URLQueryItem(name: "access_token", value: Session.shared.token),
-            URLQueryItem(name: "v", value: "5.131")
-        ]
-        
-        let url = urlComponents.url!
-        if let data = try? Data(contentsOf: url) {
-            self.parse(json: data)
-            //addPhotosToRealmDataBase()
-            return
-        } 
-    }
-    
-    func parse(json: Data) {
-        let decoder = JSONDecoder()
-        if let jsonContainer = try? decoder.decode(PhotosConteiner.self, from: json) {
-            photos = jsonContainer.response.items
-           //transferPhotos()
-        }
+//        urlComponents.scheme = "https"
+//        urlComponents.host = "api.vk.com"
+//        urlComponents.path = "/method/photos.getAll"
+//        urlComponents.queryItems = [
+//            URLQueryItem(name: "user_ids", value: Session.shared.userID),
+//            URLQueryItem(name: "access_token", value: Session.shared.token),
+//            URLQueryItem(name: "v", value: "5.131")
+//        ]
+//
+//        let url = urlComponents.url!
+//        if let data = try? Data(contentsOf: url) {
+//            self.parse(json: data)
+//            print("PHOTOS \(photos)")
+//            addPhotosToRealmDataBase()
+//        }
+//    }
+//
+//    func parse(json: Data) {
+//        let decoder = JSONDecoder()
+//        if let jsonContainer = try? decoder.decode(PhotosConteiner.self, from: json) {
+//            photos = jsonContainer.response.items
+//           transferPhotos()
+//        }
     }
 
     // MARK: Table data source

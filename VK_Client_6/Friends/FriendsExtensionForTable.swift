@@ -25,12 +25,14 @@ struct FriendTable: Equatable {
     }
 }
 
+
 // 2. Массив с данными
 var letters = ["а","б","в","г","д","е","ж","з","и","к","л","м","н","о","п","р","с","т","у","ф","х","ц","ч","ш","щ","э","ю","я","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
 
 // Начальный массив с именами
 var friendsName = [FriendTable]()
 
+// Simple factory
 func convertedNames(_ names: [FriendTable]) -> [FriendForTable] {
     // Чтобы данные в таблице обновлялись возращаемый массив должен быть локальной переменной внутри функции
     var objectsArray = [FriendForTable]()
